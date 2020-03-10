@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('id_favoritelist');
+            //$table->foreign('id_favoritelist')->references('id')->on('favoritelist');
         });
     }
 

@@ -118,11 +118,15 @@ class Item extends Model
     }
 
     public function favoritesLists(){
-        return $this->hasMany(FavoritesList::class);
+        return $this->belongsToMany(FavoritesList::class);
     }
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }
