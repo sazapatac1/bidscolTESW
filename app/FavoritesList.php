@@ -8,7 +8,7 @@ class FavoritesList extends model
 {
     // attributes id, created_at, updated_at
     // foreign_key items, user
-
+   
     public function getId()
     {
         return $this->attributes['id'];

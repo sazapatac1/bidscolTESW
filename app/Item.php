@@ -20,6 +20,7 @@ class Item extends Model
             'status' => 'required',
             'initial_bid' => 'required | numeric | gt:0',
             'start_date' => 'required | date',
+            //'user_id' => 'required',
             'final_date' => 'required | date'
         ]);
     }
