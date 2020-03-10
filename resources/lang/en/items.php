@@ -11,7 +11,7 @@ return[
     'status' => 'Item Status',
     'active' => 'Active',
     'inactive' => 'Inactive',
-    'bid' => 'Actual bid',
+    'minimum_bid' => 'Minimum bid',
     'startdate' => 'Bid start date',
     'finishdate' => 'Bid finish date',
     'details'=>'Item Details',

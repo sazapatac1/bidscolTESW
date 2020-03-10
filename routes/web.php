@@ -43,3 +43,7 @@ Route::get('/favoritesList/create', 'FavoritesListControllerController@create')-
 Route::post('/favoritesList/save', 'FavoritesListControllerController@store')->name("favoritesList.store");
 Route::get('/favoritesList/show/{id}', 'FavoritesListControllerController@show')->name("favoritesList.show");
 Route::delete('/favoritesList/delete/{id}', 'FavoritesListControllerController@destroy')->name("favoritesList.delete");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

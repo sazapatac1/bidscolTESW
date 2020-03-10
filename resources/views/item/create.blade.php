@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Costumers</div>
+            <div class="card-header"><h4> @lang('items.createitem') </h4></div>
             <div class="card-body">
                 @if($errors->any())
                 <h4>The form contains some errors</h4>
@@ -17,7 +17,6 @@
                 </ul>
                 @endif
                 <div class="list-groupm mt-2">
-                    <h4> @lang('items.createitem') </h4>
                     <form method="POST" action="{{ route('item.store') }}">
                         @csrf
                         <div class="form-group">
@@ -30,8 +29,8 @@
                           <textarea name="description" rows="5" cols="118" required>@lang('items.textarea')</textarea>
                         </div>
                         <div class="form-group">
-                            <label>@lang('items.bid')</label>
-                            <input type="text" class="form-control" name="initial_bid" value="{{ old('name') }}" required>
+                            <label>@lang('items.minimum_bid')</label>
+                            <input type="number" class="form-control" name="initial_bid" value="{{ old('name') }}" required>
                         </div>
                         <div class="form-group">
                           <label>@lang('items.status')</label>
