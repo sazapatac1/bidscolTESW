@@ -11,16 +11,9 @@
 |
 */
 
-Route::get('/list', 'CategoryController@showList')->name("category.list");
-Route::get('/create', 'CategoryController@create')->name("category.create");
-Route::post('/save', 'CategoryController@save')->name("category.save");
-Route::post('/update', 'CategoryController@update')->name("category.update");
-Route::delete('/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
-Route::get('/edit/{id}', 'CategoryController@editOne')->name("category.edit");
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/index', 'HomeController@index')->name("home.index");
+
+Route::get('/', 'HomeController@index')->name("home.index");
+Route::get('/info','HomeController@info')->name("home.info");
 
 //Item controller
 Route::get('/item/index', 'ItemController@index')->name("item.index");
@@ -43,6 +36,14 @@ Route::get('/favoritesList/create', 'FavoritesListControllerController@create')-
 Route::post('/favoritesList/save', 'FavoritesListControllerController@store')->name("favoritesList.store");
 Route::get('/favoritesList/show/{id}', 'FavoritesListControllerController@show')->name("favoritesList.show");
 Route::delete('/favoritesList/delete/{id}', 'FavoritesListControllerController@destroy')->name("favoritesList.delete");
+
+//Category controller
+Route::get('/list', 'CategoryController@showList')->name("category.list");
+Route::get('/create', 'CategoryController@create')->name("category.create");
+Route::post('/save', 'CategoryController@save')->name("category.save");
+Route::post('/update', 'CategoryController@update')->name("category.update");
+Route::delete('/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
+Route::get('/edit/{id}', 'CategoryController@editOne')->name("category.edit");
 
 Auth::routes();
 

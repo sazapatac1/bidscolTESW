@@ -12,7 +12,7 @@
                         </div>
                 @endif
                 <div class="card-body">
-                    aqui ira las funcionalidades interesantes
+                    <img src="http://imgfz.com/i/vExUaKC.jpeg" alt="">
                 </div>
             </div>
         </div>
