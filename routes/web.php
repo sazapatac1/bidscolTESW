@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//category controller
+Route::get('category/list', 'CategoryController@showList')->name("category.list");
+Route::get('category/create', 'CategoryController@create')->name("category.create");
+Route::post('category/save', 'CategoryController@save')->name("category.save");
+Route::post('category/update', 'CategoryController@update')->name("category.update");
+Route::delete('category/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
+Route::get('category/edit/{id}', 'CategoryController@editOne')->name("category.edit");
 
-Route::get('/list', 'CategoryController@showList')->name("category.list");
-Route::get('/create', 'CategoryController@create')->name("category.create");
-Route::post('/save', 'CategoryController@save')->name("category.save");
-Route::post('/update', 'CategoryController@update')->name("category.update");
-Route::delete('/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
-Route::get('/edit/{id}', 'CategoryController@editOne')->name("category.edit");
 Route::get('/', function () {
     return view('welcome');
 });
