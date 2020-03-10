@@ -22,7 +22,7 @@ class CreateItemTable extends Migration
             $table->date('start_date');
             $table->date('final_date');
             $table->timestamps();
-            $table->integer('id_user');
+            //$table->integer('id_user');
             //$table->integer('id_category');
             //$table->foreign('id_category')->references('id')->on('categories');
         });

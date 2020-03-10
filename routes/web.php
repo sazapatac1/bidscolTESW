@@ -10,14 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//category controller
-Route::get('category/list', 'CategoryController@showList')->name("category.list");
-Route::get('category/create', 'CategoryController@create')->name("category.create");
-Route::post('category/save', 'CategoryController@save')->name("category.save");
-Route::post('category/update', 'CategoryController@update')->name("category.update");
-Route::delete('category/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
-Route::get('category/edit/{id}', 'CategoryController@editOne')->name("category.edit");
-
 
 Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/info','HomeController@info')->name("home.info");
@@ -44,13 +36,13 @@ Route::post('/favoritesList/save', 'FavoritesListControllerController@store')->n
 Route::get('/favoritesList/show/{id}', 'FavoritesListControllerController@show')->name("favoritesList.show");
 Route::delete('/favoritesList/delete/{id}', 'FavoritesListControllerController@destroy')->name("favoritesList.delete");
 
-//Category controller
-Route::get('/list', 'CategoryController@showList')->name("category.list");
-Route::get('/create', 'CategoryController@create')->name("category.create");
-Route::post('/save', 'CategoryController@save')->name("category.save");
-Route::post('/update', 'CategoryController@update')->name("category.update");
-Route::delete('/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
-Route::get('/edit/{id}', 'CategoryController@editOne')->name("category.edit");
+//category controller
+Route::get('category/list', 'CategoryController@showList')->name("category.list");
+Route::get('category/create', 'CategoryController@create')->name("category.create");
+Route::post('category/save', 'CategoryController@save')->name("category.save");
+Route::post('category/update', 'CategoryController@update')->name("category.update");
+Route::delete('category/delete/{id}', 'CategoryController@deleteOne')->name("category.delete");
+Route::get('category/edit/{id}', 'CategoryController@editOne')->name("category.edit");
 
 Auth::routes();
 

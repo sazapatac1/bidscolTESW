@@ -18,9 +18,9 @@ class CreateCommentsTable extends Migration
             $table->text('description');
             $table->integer('rating');
             $table->timestamps();
-            $table->integer('id_user');
+            //$table->integer('id_user');
             //$table->foreign('id_user')->references('id')->on('users');
-            $table->integer('id_item');
+            //$table->integer('id_item');
             //$table->foreign('id_item')->references('id')->on('items');
         });
         
