@@ -50,6 +50,6 @@ class User extends Authenticatable
     }
 
     public function favoriteLists(){
-        return $this->belongsTo(Comment::class);
+        return $this->hasOne(FavoritesList::class);
     }
 }
