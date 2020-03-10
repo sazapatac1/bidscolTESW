@@ -3,12 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Http\Client\Request;
 
 class Comment extends Model
 {
     //attributes id, description, rating, id_item, item_id, created_at, updated_at
     protected $fillable = ['description', 'rating'];
+
+    public static function validate(Request $request){
+        $request->validate([
+            "description" => "required",
+            "rating" => "required | numeric|gt:0"
+        ]);
+    }
 
     public function getId()
     {

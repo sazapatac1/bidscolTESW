@@ -17,7 +17,7 @@ class CreateFavoritesListTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            //$table->foreign('id_user')->references('id')->on('users');
         });
     }
 

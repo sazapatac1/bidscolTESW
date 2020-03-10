@@ -3,11 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Client\Request;
 
 class Category extends Model
 {
     //attributes id, name, price, created_at, updated_at
     protected $fillable = ["title"];
+
+    public static function validate(Request $request){
+        $request->validate([
+            "title" => "required"
+        ]);
+    }
 
     public function items()
     {

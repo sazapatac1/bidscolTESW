@@ -18,9 +18,9 @@ class CreateBidsTable extends Migration
             $table->timestamps();
             $table->integer('bid_value');
             $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            //$table->foreign('id_user')->references('id')->on('users');
             $table->integer('id_item');
-            $table->foreign('id_item')->references('id')->on('items');
+            //$table->foreign('id_item')->references('id')->on('items');
         });
     }
 

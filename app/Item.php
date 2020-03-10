@@ -20,6 +20,7 @@ class Item extends Model
             'status' => 'required',
             'initial_bid' => 'required | numeric | gt:0',
             'start_date' => 'required | date',
+            //'user_id' => 'required',
             'final_date' => 'required | date'
         ]);
     }
@@ -118,11 +119,15 @@ class Item extends Model
     }
 
     public function favoritesLists(){
-        return $this->hasMany(FavoritesList::class);
+        return $this->belongsToMany(FavoritesList::class);
     }
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }
