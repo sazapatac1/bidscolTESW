@@ -2,30 +2,28 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>@yield('title','Home Page')</title>
+    <title>@yield('title','BidsCol')</title>
     <!-- Styles -->
-    <!--<link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}" >-->
     <link href="{{ asset('css/customStyle.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark dark-bar">
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
         <div class="container">
-            <a class="navbar-brand ml-5" href="{{ route('home.index') }}">
+            <a class="navbar-brand" href="{{ route('home.index') }}">
                 @lang('navbar.title')
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <!-- Future Left Side Links --> 
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Future authentication Links -->           
@@ -41,9 +39,7 @@
                         <a class="nav-link" href="#">@lang('navbar.contact')</a>
                     </li>
                 </ul>
-
-                <!-- Right Side Of Navbar -->
-                
+                <!-- Right Side Of Navbar -->              
                 <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -57,11 +53,16 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href=""
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,6 +79,27 @@
             </div>
         </div>
     </nav>
+    <!-- End Nav bar -->
+    <div class="container">
+    <!-- Search bar -->
+        <div class="row">
+            <div class="dropdown">
+                <a class="btn btn-success dropdown-toggle mr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @lang('searchbar.category')
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">@lang('searchbar.music')</a>
+                    <a class="dropdown-item" href="#">@lang('searchbar.electronic')</a>
+                    <a class="dropdown-item" href="#">@lang('searchbar.videogames')</a>
+                </div>
+            </div>
+            <input type="text" class="col-sm-8 rounded-0" placeholder="@lang('searchbar.searchDescription')">
+            <button type="button" class="btn btn-success col-sm rounded-0">@lang('searchbar.search')</button>
+            
+        </div>
+    </div>
+    <!-- End Search bar -->
     <main class="py-4">
         @yield('content')
     </main>
@@ -89,6 +111,4 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
 </html>

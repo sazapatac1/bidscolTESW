@@ -2,11 +2,13 @@
 
 return[
     'bid' => 'Bid',
-    "days_left" => 'days left',
-    'create' => 'Create',
+    'all_products' => 'All products',
+    'days_left' => 'days left',
+    'days_left_1' => 'Days left:',
+    'sell' => 'Do you want to sell something?',
     'createitem' => 'Create new item',
     'name' => 'Name',
-    'description' => ' Item description',
+    'description' => 'Description:',
     'textarea' => 'Write a short description of your item',
     'status' => 'Item Status',
     'active' => 'Active',
@@ -14,6 +16,7 @@ return[
     'minimum_bid' => 'Minimum bid',
     'startdate' => 'Bid start date',
     'finishdate' => 'Bid finish date',
-    'details'=>'Item Details',
-    'comments' => 'Comments'
+    'details'=>'Details',
+    'comments' => 'Comments',
+    'started' => 'Starting bid:'
 ];

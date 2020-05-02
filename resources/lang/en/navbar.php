@@ -2,7 +2,7 @@
 
 return[
     'title' => 'bidscol',
-    'items' => 'products',
+    'items' => 'Products',
     'about' => 'About',
     'contact' => 'Contact',
     'login' => 'Login',

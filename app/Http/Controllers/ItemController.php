@@ -14,7 +14,7 @@ class ItemController extends Controller
     public function index()
     {
         $data = [];
-        $data["title"] = "Items";
+        $data["title"] = "Products | Bidscol";
         $data["items"] = Item::orderBy("id")->get();
 
         return view('item.index')->with("data", $data);
@@ -55,9 +55,15 @@ class ItemController extends Controller
     public function show($id)
     {
         $data = [];
-        $data["title"] = "Show item";
+        $data["title"] = "Product";
         $data["item"] = Item::find($id);
-
+        $bids = $data["item"]->bids;
+        $data["max_bid"] = $data["item"]->getInitial_bid();
+        foreach ($bids as $bid){
+            if($bid->bid_value > $data["max_bid"]){
+                $data["max_bid"] = $bid->bid_value;
+            }
+        }
         return view('item.show')->with("data", $data);
     }
 

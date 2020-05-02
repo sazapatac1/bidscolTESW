@@ -13,18 +13,23 @@ class CreateItemTable extends Migration
      */
     public function up()
     {
+        //Schema::enableForeignKeyConstraints();
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
             $table->text('description');
             $table->text('status');
             $table->integer('initial_bid');
+            $table->integer('current_bid');
             $table->date('start_date');
             $table->date('final_date');
             $table->timestamps();
-            //$table->integer('id_user');
-            //$table->integer('id_category');
-            //$table->foreign('id_category')->references('id')->on('categories');
+            //foreign
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+           
         });
     }
 

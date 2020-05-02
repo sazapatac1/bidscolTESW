@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class Item extends Model
 {
     // attributes id, name, description, status, initial_bid, start_date, final_date, created_at, updated_at
-    // foreign_key category, bids, favoritesLists, user
-    protected $fillable = ['name', 'description', 'status','initial_bid','start_date','final_date'];
+    // foreign_key category, user
+    protected $fillable = ['name', 'description', 'status','initial_bid','current_bid','winner','start_date','final_date'];
 
 
     public static function validate(Request $request)
@@ -73,6 +73,26 @@ class Item extends Model
     public function setInitial_bid($initial_bid)
     {
         $this->attributes['initial_bid'] = $initial_bid;
+    }
+
+    public function getCurrent_bid()
+    {
+        return $this->attributes['current_bid'];
+    }
+
+    public function setCurrent_bid($current_bid)
+    {
+        $this->attributes['current_bid'] = $current_bid;
+    }
+
+    public function getWinner()
+    {
+        return $this->attributes['winner'];
+    }
+
+    public function setWinner($winner)
+    {
+        $this->attributes['winner'] = $winner;
     }
 
     public function getStart_date()

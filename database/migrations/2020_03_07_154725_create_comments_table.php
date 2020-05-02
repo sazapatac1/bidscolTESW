@@ -18,10 +18,11 @@ class CreateCommentsTable extends Migration
             $table->text('description');
             $table->integer('rating');
             $table->timestamps();
-            //$table->integer('id_user');
-            //$table->foreign('id_user')->references('id')->on('users');
-            //$table->integer('id_item');
-            //$table->foreign('id_item')->references('id')->on('items');
+            //Foreign
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('item_id')->unsigned();
+            $table->foreign('item_id')->references('id')->on('items');
         });
         
     }
