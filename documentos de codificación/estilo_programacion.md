@@ -1,27 +1,75 @@
-Estilo de codificación
+# Estilo de codificación para el proyecto Bidscol
 
-    - if
-        if ($condition) {
-            ...
-        }
+##Estilo para PHP
+### Condicionales IF
 
-    - while
-        while ($condition){
-            ...
-        }
+>		if (
+>		    ...
+>		}
 
-    - clases
-        final class OpenSourceController{
-            public function index() {
-                return view('openSource');
-            }
-        }
-        
-    - strings
-        $greeting = "Hi, I am {$name}.";
+### Ciclo While
+>		while (
+>		    ...
+>		}
 
-    - identación usando <tab>
+### Ciclo For
+>       for(-; -; -){
+>           ...
+>       }
 
-    - Crear una carpeta para las vistas que usen un controlador específico
+### Definición de clases
+>		final class OpenSourceController (
+>		    ...
+>		}
 
-    - Nombrar los modelos y controladores de acuerdo al diagrama de clases
+### Funciones dentro de clases
+>		final class OpenSourceController (
+>		    public function index() {
+>               return view('openSource');
+>		}
+
+### Declaración de Strings
+>       $greeting = "Hi, I am {$name}
+
+
+### Otras convenciones
+- Identación unicámente mediante la tecla Tabulador
+- Se deberá crear una carpeta para las vistas que usen un controlador específico
+- Siempre se seguiran los nombres acordados en el diagrama de clases para los modelos y los controladores
+
+
+## Estilo para Blade
+### Condicionales IF
+>		@if(...)
+>           ...
+>       @elseif(...)
+>           ...
+>       @else
+>           ...
+>       @endif
+
+### Ciclo For & Foreach
+>       @foreach(...)
+>           ...
+>       @endforeach
+
+### Ciclo While
+>       @while (true)
+>           ...
+>       @endwhile
+
+### Declaración Switch
+>       @switch(...)
+>           @case(1)
+>           ...
+>           @break
+
+>           @case(2)
+>           ...
+>           @break
+
+>           @default
+>           ...
+>       @endswitch
+
+
