@@ -1,6 +1,6 @@
 # Estilo de codificación para el proyecto Bidscol
 
-##Estilo para PHP
+## Estilo para PHP
 ### Condicionales IF
 
 >		if (
