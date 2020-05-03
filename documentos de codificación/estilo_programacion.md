@@ -1,6 +1,24 @@
 # Estilo de codificación para el proyecto Bidscol
 
-## Estilo para PHP
+# Estilo para PHP
+### Codificación Estandar
+- Los archivos deben usar solo los tags 
+>       <?php
+y
+>       <?=
+- Los archivos deben emplear solamente la codificación UTF-8
+- Los archivos DEBERÍAN declarar cualquier estructura (clases, funciones, constantes, etc,...) o realizar partes de la lógica de negocio (por ejemplo, generar una salida, cambio de configuración ini, etc,...) pero NO DEBERÍAN hacer las dos cosas.
+- Los nombres de clases deben ser declarados en la notación ***StudlyCaps***
+- Los nombres de los metodos deben declararse en notación ***camelCase***
+### Tipo de retorno nulo
+Todo metodo que no devuelva nada, debe indicarse con void
+### Declaración y concatenación de Strings
+Forma correcta
+>       $greeting = "Hi, I am {$name}
+Forma incorrecta
+>       $greeting = 'Hi, I am ' . $name . '.';
+
+## Estructuración del código
 ### Condicionales IF
 
 >		if (
@@ -28,8 +46,6 @@
 >               return view('openSource');
 >		}
 
-### Declaración de Strings
->       $greeting = "Hi, I am {$name}
 
 
 ### Otras convenciones
