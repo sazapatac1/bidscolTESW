@@ -17,6 +17,13 @@ Forma correcta
 >       $greeting = "Hi, I am {$name}
 Forma incorrecta
 >       $greeting = 'Hi, I am ' . $name . '.';
+### Routing
+- Los nombres de las rutas deben usar la notacion ***camelCase*** al igual que los parametros de estas
+- Una url de ruta no debe comenzar a / menos que la url sea una cadena vacía
+### Controladores
+- Seran nombrados en singular
+- Se debe procurar mantener los controladores simples y adherirse a las palabras clave por defecto de CRUD ( index, create, store, show, edit, update, destroy)
+
 
 ## Estructuración del código
 ### Condicionales IF
@@ -87,5 +94,8 @@ Forma incorrecta
 >           @default
 >           ...
 >       @endswitch
+
+### Otras convenciones
+- Se hara uso de la herramienta [Localization](https://laravel.com/docs/7.x/localization) de Laravel para los textos dentro de las vistas.
 
 
