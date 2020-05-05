@@ -50,5 +50,4 @@
     </div>
     <!--End Carousel-->          
 </div>
-@include('layouts.footer')
 @endsection
