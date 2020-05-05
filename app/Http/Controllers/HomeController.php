@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function profile(){
         $data["title"] = "Profile";
         $data["items"] = User::find(Auth::user()->id)->items;
-        $data["bids"] = Bid::where('user_id',1)->get();
+        $data["bids"] =  User::find(Auth::user()->id)->bids;
         return view('home.profile')->with("data",$data);
     }
 }

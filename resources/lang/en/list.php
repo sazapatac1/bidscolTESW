@@ -1,9 +1,9 @@
 <?php
 return[
     'List_of_categorie' => 'List of categories',
-    'Search'=>'Search',
-    'create_new' => 'create new',
-    'ID' => 'ID',
+    'Search'=>'search',
+    'create_new' => 'Create',
+    'ID' => 'id',
     'Categories' => 'Categories',
     'Delete' => 'Delete',
     'Edit' => 'Edit',

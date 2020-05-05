@@ -10,10 +10,11 @@ class CategoryController extends Controller
     public function showList()
     {
         $data = []; //to be sent to the view
-        $orderBy = 'title';
+        $data["title"] = "Categories";
+        $orderBy = 'name';
         $category = Category::orderBy($orderBy,'asc')->get();
         $data["orderBy"] = $orderBy;
-        $data["title"] = "List of categories";
+        $data["name"] = "List of categories";
         $data["categories"] = $category;
         return view('category.list')->with("data",$data);
         
@@ -35,7 +36,7 @@ class CategoryController extends Controller
             
             Category::create($request->only(["name"]));
             
-            return view('category.save')->with('message','created');
+            return redirect()->route('category.list')->with('success','Category created successfully!');
         }
         
         public function showOne($id)
@@ -50,7 +51,7 @@ class CategoryController extends Controller
             $data = []; //to be sent to the view
             $category = Category::findOrFail($id);
             $category->delete(); 
-            return view('category.save')->with('message','deleted');
+            return redirect()->route('category.list')->with('success','Category deleted');
         }
 
         public function editOne($id)
@@ -59,11 +60,11 @@ class CategoryController extends Controller
             return view('category.edit')->with('category',$category);
         }
 
-        public function update(Request $request, $id)
+        public function update(Request $request)
         {                   
-            $category = Category::findOrFail($id);
-            $category->title = $request->get('title');
-            $category->update();
-            return view('category.save')->with('message','edit');
+            $category = Category::findOrFail($request->category_id);
+            $category->name = $request->name;
+            $category->save();
+            return redirect()->route('category.list')->with('success','Category edited');
         }
 }

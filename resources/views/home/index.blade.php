@@ -21,8 +21,7 @@
                 </div>
             </div>
             <input type="text" class="col-sm-8 rounded-0" placeholder="@lang('searchbar.searchDescription')">
-            <button type="button" class="btn btn-success col-sm rounded-0">@lang('searchbar.search')</button>
-            
+            <button type="button" class="btn btn-success col-sm rounded-0">@lang('searchbar.search')</button>  
         </div>
     </div>
     <!-- End Search bar -->
@@ -51,3 +50,4 @@
     <!--End Carousel-->          
 </div>
 @endsection
+

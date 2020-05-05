@@ -16,16 +16,12 @@
                     @endforeach
                 </ul>
                 @endif
-
-                <form method="POST" action="{{ route('category.update', ['id' => $category->getId() ]) }}">
-                    @method('PACTH')
+                <form method="POST" action="{{ route('category.update')}}">
                     @csrf
-                    <div>
-                     <input class="form-control" type="text" placeholder= {{ $category->getName() }} name="title" value="{{ old('title') }}" />
-                    </div>
-                    <button class="btn btn-success" type="submit" value="Send">@lang('edit.Edit')</button>
+                    <input class="form-control" type="text" placeholder= {{ $category->getName() }} name="name" value="{{ old('name') }}" />
+                    <input name="category_id" type="hidden" value="{{$category->getId()}}">
+                    <button class="btn btn-success mt-2" type="submit" value="Send">@lang('edit.Edit')</button>
                 </form>
-
                 </div>
             </div>
         </div>
