@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Bid;
 
 class HomeController extends Controller
 {
@@ -29,5 +32,12 @@ class HomeController extends Controller
     public function info()
     {
         return view('layouts.app');
+    }
+
+    public function profile(){
+        $data["title"] = "Profile";
+        $data["items"] = User::find(Auth::user()->id)->items;
+        $data["bids"] = Bid::where('user_id',1)->get();
+        return view('home.profile')->with("data",$data);
     }
 }

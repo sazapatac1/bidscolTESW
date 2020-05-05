@@ -21,7 +21,7 @@
                 <form method="POST" action="{{ route('category.save') }}">
                     @csrf
                     <div>
-                     <input class="form-control" type="text" placeholder="Enter name" name="title" value="{{ old('title') }}" />
+                     <input class="form-control" type="text" placeholder="Enter name" name="name" value="{{ old('title') }}" />
                     </div>
                     <button class="btn btn-success" type="submit" value="Send">@lang('create.send')</button>
                 </form>

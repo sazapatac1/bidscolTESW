@@ -7,6 +7,25 @@
                 {{ session('status') }}
             </div>
     @endif
+    <!-- Search bar -->
+    <div class="row mb-3">
+            <div class="dropdown">
+                <a class="btn btn-success dropdown-toggle mr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @lang('searchbar.category')
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">@lang('searchbar.music')</a>
+                    <a class="dropdown-item" href="#">@lang('searchbar.electronic')</a>
+                    <a class="dropdown-item" href="#">@lang('searchbar.videogames')</a>
+                </div>
+            </div>
+            <input type="text" class="col-sm-8 rounded-0" placeholder="@lang('searchbar.searchDescription')">
+            <button type="button" class="btn btn-success col-sm rounded-0">@lang('searchbar.search')</button>
+            
+        </div>
+    </div>
+    <!-- End Search bar -->
     <!--Carousel-->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

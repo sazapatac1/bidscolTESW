@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class Item extends Model
 {
-    // attributes id, name, description, status, initial_bid, start_date, final_date, created_at, updated_at
+    // attributes id, name, description, status, initial_bid, current_bid, winner, start_date, final_date, created_at, updated_at
     // foreign_key category, user
-    protected $fillable = ['name', 'description', 'status','initial_bid','current_bid','winner','start_date','final_date'];
+    protected $fillable = ['name', 'description', 'status','initial_bid','current_bid','start_date','final_date', 'category_id', 'user_id'];
 
 
     public static function validate(Request $request)
@@ -20,7 +20,6 @@ class Item extends Model
             'status' => 'required',
             'initial_bid' => 'required | numeric | gt:0',
             'start_date' => 'required | date',
-            //'user_id' => 'required',
             'final_date' => 'required | date'
         ]);
     }

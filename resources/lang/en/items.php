@@ -6,9 +6,9 @@ return[
     'days_left' => 'days left',
     'days_left_1' => 'Days left:',
     'sell' => 'Do you want to sell something?',
-    'createitem' => 'Create new item',
+    'createitem' => 'Create item',
     'name' => 'Name',
-    'description' => 'Description:',
+    'description' => 'Description',
     'textarea' => 'Write a short description of your item',
     'status' => 'Item Status',
     'active' => 'Active',
@@ -18,5 +18,7 @@ return[
     'finishdate' => 'Bid finish date',
     'details'=>'Details',
     'comments' => 'Comments',
-    'started' => 'Starting bid:'
+    'started' => 'Starting bid:',
+    'submit' => 'Start bid',
+    'category' => 'Category'
 ];

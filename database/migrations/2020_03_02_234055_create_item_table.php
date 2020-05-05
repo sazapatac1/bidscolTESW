@@ -16,11 +16,12 @@ class CreateItemTable extends Migration
         //Schema::enableForeignKeyConstraints();
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name');
-            $table->text('description');
-            $table->text('status');
+            $table->string('name',20);
+            $table->string('description',50);
+            $table->string('status',10);
             $table->integer('initial_bid');
             $table->integer('current_bid');
+            $table->integer('winner')->default(0);
             $table->date('start_date');
             $table->date('final_date');
             $table->timestamps();
