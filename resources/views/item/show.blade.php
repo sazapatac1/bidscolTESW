@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="container">
+@include('util.message')
     <div class="card">
         <div class="card-header bg-dark text-white">@lang('items.details')</div>
         <div class="card-body row justify-content-center">
@@ -29,11 +30,14 @@
                 <h6>Current bid:</h6>
                 <p>$ {{$data["max_bid"]}}</p>
                 <h5 class="mt-5">Do you want it?</h5>
-                <form>
-                    <input type="number" id="" name=""
-                    min="10" max="100" placeholder="$">
+                <form method="POST" action="{{ route('bid.store') }}">
+                @csrf
+                    <input name="bid_value" type="number" class="form-control" 
+                    min='{{$data["max_bid"]+1}}'  placeholder="$" value="{{ old('name') }}">
+                    <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                    <input name="item_id" type="hidden" value="{{$item->getId()}}">
+                    <button type="submit" class="mt-2 btn btn-success">Place bid</button>
                 </form>
-                <button type="submit" class="mt-2 btn btn-success">Place bid</button>
             </div>
         </div>
         </div>

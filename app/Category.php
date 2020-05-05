@@ -8,17 +8,12 @@ use Illuminate\Http\Client\Request;
 class Category extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ["title"];
+    protected $fillable = ["name"];
 
     public static function validate(Request $request){
         $request->validate([
-            "title" => "required"
+            "name" => "required"
         ]);
-    }
-
-    public function items()
-    {
-        // return $this->hasMany("App/Item");
     }
 
     public function getId()
@@ -33,12 +28,17 @@ class Category extends Model
 
     public function getName()
     {
-        return $this->attributes['title'];
+        return $this->attributes['name'];
     }
 
     public function setName($name)
     {
-        $this->attributes['title'] = $name;
+        $this->attributes['name'] = $name;
+    }
+
+    public function items()
+    {
+        return $this->hasMany("App/Item");
     }
 
 }

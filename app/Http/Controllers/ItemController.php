@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Item;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -29,6 +30,7 @@ class ItemController extends Controller
     {
         $data = [];
         $data["title"] = "Create item";
+        $data["categories"] = Category::all();
 
         return view('item.create')->with("data", $data);
     }
@@ -42,7 +44,18 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         Item::validate($request);
-        Item::create($request->only(["name","description","status","initial_bid","start_date","final_date"]));
+        Item::create([
+            'id' => $request->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => $request->status,
+            'initial_bid' => $request->initial_bid,
+            'current_bid' => $request->initial_bid,
+            'start_date' => $request->start_date,
+            'final_date' => $request->final_date,
+            'category_id' => $request->category,
+            'user_id' => $request->user_id
+        ]);
         return back()->with('success','Item created successfully!');
     }
 

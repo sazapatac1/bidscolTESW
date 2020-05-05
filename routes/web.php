@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/info','HomeController@info')->name("home.info");
+Route::get('/profile','HomeController@profile')->name("home.profile");
 
 //Item controller
 Route::get('/item/index', 'ItemController@index')->name("item.index");
@@ -20,6 +21,9 @@ Route::get('/item/create', 'ItemController@create')->name("item.create");
 Route::post('/item/store', 'ItemController@store')->name("item.store");
 Route::get('/item/show/{id}', 'ItemController@show')->name("item.show");
 Route::delete('/item/delete/{id}', 'ItemController@destroy')->name("item.delete");
+
+//Bid controller
+Route::post('/bid/store', 'BidController@store')->name("bid.store");
 
 //Comment controller
 Route::get('/comment/create', 'CommentController@create')->name("comment.create");

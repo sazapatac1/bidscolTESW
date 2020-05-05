@@ -30,10 +30,10 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            "title" => "required",
+            "name" => "required",
             ]);
             
-            Category::create($request->only(["title"]));
+            Category::create($request->only(["name"]));
             
             return view('category.save')->with('message','created');
         }

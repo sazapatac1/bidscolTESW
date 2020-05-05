@@ -5,6 +5,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
+    @include('util.message')
         <div class="card">
             <div class="card-header"><h4> @lang('items.createitem') </h4></div>
             <div class="card-body">
@@ -26,33 +27,44 @@
                         <div class="form-group">
                           <label>@lang('items.description')</label>
                           <br>
-                          <textarea name="description" rows="5" cols="118" required>@lang('items.textarea')</textarea>
+                          <textarea name="description" class="form-control" rows="5" placeholder="@lang('items.textarea')"required></textarea>
                         </div>
                         <div class="form-group">
-                            <label>@lang('items.minimum_bid')</label>
-                            <input type="number" class="form-control" name="initial_bid" value="{{ old('name') }}" required>
+                            <label>@lang('items.category')</label>
+                            <br>
+                            <select name="category" class="form-control">
+                            <option value ="" selected>Choose...</option>
+                            @foreach($data["categories"] as $category)            
+                                <option value="{{$category->getId()}}">{{$category->getName()}}</option>
+                            @endforeach
+                            </select>
                         </div>
-                        <div class="form-group">
-                          <label>@lang('items.status')</label>
-                          <br>
-                          <select name="status" size="2">
-                            <option selected> @lang('items.active') </option>
-                            <option>@lang('items.inactive')</option>
-                          </select>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>@lang('items.minimum_bid')</label>
+                                <input type="number" class="form-control" name="initial_bid"     placeholder="$"required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>@lang('items.status')</label>
+                                <br>
+                                <select name="status" class="form-control">
+                                    <option selected> @lang('items.active') </option>
+                                    <option>@lang('items.inactive')</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="start">@lang('items.startdate')</label>
-                            <input type="date" id="startdate" name="start_date"
-                            value="2020-01-01"
-                            min="2020-01-01">
+                        <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="start">@lang('items.startdate')</label>
+                                <input type="date" name="start_date">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="finish">@lang('items.finishdate')</label>
+                                <input type="date" name="final_date">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="finish">@lang('items.finishdate')</label>
-                            <input type="date" id="finishdate" name="final_date"
-                            value="2020-01-01"
-                            min="2020-01-01">
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-success pull-right">@lang('items.submit')</button>
                       </form>
                   </div>
             </div>

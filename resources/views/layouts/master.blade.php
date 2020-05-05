@@ -11,7 +11,7 @@
 <body>
     <div id="app">
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home.index') }}">
                 @lang('navbar.title')
@@ -58,9 +58,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href=""
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('home.profile') }}">
                                         {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
@@ -81,25 +79,6 @@
     </nav>
     <!-- End Nav bar -->
     <div class="container">
-    <!-- Search bar -->
-        <div class="row">
-            <div class="dropdown">
-                <a class="btn btn-success dropdown-toggle mr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @lang('searchbar.category')
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">@lang('searchbar.music')</a>
-                    <a class="dropdown-item" href="#">@lang('searchbar.electronic')</a>
-                    <a class="dropdown-item" href="#">@lang('searchbar.videogames')</a>
-                </div>
-            </div>
-            <input type="text" class="col-sm-8 rounded-0" placeholder="@lang('searchbar.searchDescription')">
-            <button type="button" class="btn btn-success col-sm rounded-0">@lang('searchbar.search')</button>
-            
-        </div>
-    </div>
-    <!-- End Search bar -->
     <main class="py-4">
         @yield('content')
     </main>

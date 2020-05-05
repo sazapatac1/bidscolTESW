@@ -9,11 +9,13 @@ class Bid extends Model
 {
     //attributes id, bid_value, created_at, updated_at
     //foreing key users, items,
-    protected $fillable = ['bid_value'];
+    protected $fillable = ['bid_value', 'user_id', 'item_id'];
 
     public static function validate(Request $request){
         $request->validate([
-            "bid_value" => "required|numeric|gt:0"
+            "bid_value" => "required|numeric|gt:0",
+            "user_id" => "required",
+            "item_id" => "required"
         ]);
     }
 
