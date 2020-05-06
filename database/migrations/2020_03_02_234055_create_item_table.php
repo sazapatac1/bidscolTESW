@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateItemTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations item.
      *
      * @return void
      */

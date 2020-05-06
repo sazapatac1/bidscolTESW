@@ -7,7 +7,7 @@ use App\User;
 class ItemTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds item.
      *
      * @return void
      */

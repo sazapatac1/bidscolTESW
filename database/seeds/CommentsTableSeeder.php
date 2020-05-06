@@ -7,7 +7,7 @@ use App\User;
 class CommentsTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds comm.
      *
      * @return void
      */

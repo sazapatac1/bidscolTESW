@@ -7,7 +7,7 @@ use App\User;
 class FavoritesListTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds fav.
      *
      * @return void
      */
