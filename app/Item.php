@@ -80,27 +80,7 @@ class Item extends Model
         return $this->attributes['current_bid'];
     }
 
-    public function getCurrent_bid_cop()
-    {
-        $bid = $this->attributes['current_bid'];
-        $client = new Client([
-            'base_uri' => 'https://api.cambio.today/v1/quotes/USD/COP/json?quantity=1&key=4339|2TE63aa^nfxqKvSYe3f9oKaPn_jjsbw9',
-            'timeout' => 2.0,
-        ]); 
-
-        $response = $client->request('GET', '');
-        $contents = json_decode($response->getBody()->getContents());
-        foreach ($contents as $content){
-            $value = $content['value'];
-        }
-        $bid = $bid * $value;
-    }
-
-    public function getCurrent_bid_eur()
-    {
-        $bid = $this->attributes['current_bid'];
-    }
-
+   
     public function setCurrent_bid($current_bid)
     {
         $this->attributes['current_bid'] = $current_bid;

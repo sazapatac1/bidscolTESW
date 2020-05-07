@@ -27,7 +27,7 @@
                     <h6>@lang('items.description')</h6>
                     <p>{{ $item->getDescription()}}</p>
                     <h6>@lang('items.started')</h6> 
-                    <p>$ {{$item->getCurrent_bid_cop()}}</p>
+                    <p>$ {{$item->getCurrent_bid}}</p>
                     <h6>@lang('items.days_left_1')</h6>
                     <p> {{$item->getDaysLeft()}} </p>
                 @else
