@@ -9,7 +9,9 @@
         <div class="card">
         <div class="card-header">
             <h4> @lang('user_profile.profile') </h4>
-            <button type="button" class="btn btn-success pull-right">@lang('user_profile.download')</button>
+            <div class="text-right">
+                <a href="{{ route('home.pdf') }}" class="btn btn-success mb-3" style="width: 200px;" disabled>@lang('user_profile.download')</a>
+            </div>    
         </div>
         <div class="card-body">
             @if($errors->any())
