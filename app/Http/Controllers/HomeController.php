@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Bid;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class HomeController extends Controller
 {
@@ -39,5 +40,11 @@ class HomeController extends Controller
         $data["items"] = User::find(Auth::user()->id)->items;
         $data["bids"] =  User::find(Auth::user()->id)->bids;
         return view('home.profile')->with("data",$data);
+    }
+
+    public function exportPDF(){
+        $data["items"] = User::find(Auth::user()->id)->items;
+        $data["bids"] =  User::find(Auth::user()->id)->bids;
+        return PDF::loadView('home.pdf', compact('data'))->stream('archivo.pdf');
     }
 }
