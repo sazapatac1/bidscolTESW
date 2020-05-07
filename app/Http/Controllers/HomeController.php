@@ -39,10 +39,8 @@ class HomeController extends Controller
     public function profile(){
         $data["title"] = "Profile";
         $data["items"] = Auth::user()->items;
-        $data["bids"] = Bid::select('bids.bid_value','items.name', 'bids.created_at')
-                            ->join('items', 'bids.item_id','=','items.id')
-                            ->where('bids.user_id',Auth::user()->getId())
-                            ->orderBy('items.name','ASC')
+        $data["bids"] = Bid::where('user_id',Auth::user()->getId())
+                            ->orderBy('item_id','ASC')
                             ->get();
         return view('home.profile')->with("data",$data);
     }

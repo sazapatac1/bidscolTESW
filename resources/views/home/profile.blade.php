@@ -38,9 +38,9 @@
             <ul class="list-group">
                 @foreach($data["bids"] as $bid)
                     <li class="list-group-item">
-                        <b>{{$bid->name}}: </b>
-                        ${{$bid->bid_value}} 
-                        <i class="pull-right">{{$bid->created_at}}</i>
+                        <b>{{$bid->item->getName()}}: </b>
+                        ${{$bid->getBidValue()}} 
+                        <i class="pull-right">{{$bid->getCreated_at}}</i>
                     </li>
                 @endforeach
             </ul>

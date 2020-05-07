@@ -40,16 +40,11 @@ class ItemController extends Controller
         $data = [];
         $data["title"] = "Product";
         $data["item"] = Item::find($id);
-        $data["max_bid"] = Bid::select('bids.bid_value','users.name')
-                            ->join('users', 'bids.user_id','=','users.id')
-                            ->where('bids.item_id',$id)
-                            ->orderBy('bids.bid_value','DESC')
+        $data["max_bid"] = Bid::where('item_id',$id)
+                            ->orderBy('bid_value','DESC')
                             ->first();
-        $data["nbids"] = Item::find($id)->bids->count();
-        $data["comments"] = Comment::select('comments.description', 'users.name', 'comments.user_id', 'comments.created_at')
-                            ->join('users', 'comments.user_id','=','users.id')
-                            ->where('comments.item_id',$id)
-                            ->get();
+        $data["nbids"] = $data["item"]->bids->count();
+        $data["comments"] = Comment::where('comments.item_id',$id)->get();
         return view('item.show')->with("data", $data);
     }
 

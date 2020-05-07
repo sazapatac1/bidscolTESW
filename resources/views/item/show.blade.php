@@ -40,8 +40,8 @@
                 @if($item->getStatus()=='Active')
                     <h6>@lang('items.current'):</h6>
                     @if($data["max_bid"])
-                        <p> <b class=text-success>${{$data["max_bid"]->bid_value}}</b>
-                        @lang('items.by') {{$data["max_bid"]->name}}</p>
+                        <p> <b class=text-success>${{$data["max_bid"]->getBidValue()}}</b>
+                        @lang('items.by') {{$data["max_bid"]->user->getName()}}</p>
                         <p>[{{$data["nbids"]}} @lang('items.bids')]</p>
                     @else
                         <i> @lang('items.no_bids') </i>
@@ -51,7 +51,7 @@
                     @csrf
                         @if($data["max_bid"])
                             <input name="bid_value" type="number" class="form-control" 
-                            min='{{$data["max_bid"]->bid_value+1}}'  placeholder="$" value="{{ old('name') }}">
+                            min='{{$data["max_bid"]->getBidValue()+1}}'  placeholder="$" value="{{ old('name') }}">
                         @else
                         <input name="bid_value" type="number" class="form-control" 
                             min='{{$data["item"]->getInitial_Bid()+1}}'  placeholder="$" value="{{ old('name') }}">
@@ -70,8 +70,8 @@
                 @elseif($item->getStatus()=='Finished')
                 <h5>¡Winner!</h5>
                     @if($data["max_bid"])
-                        <p> <b class=text-success>${{$data["max_bid"]->bid_value}}</b>
-                        by {{$data["max_bid"]->name}}</p>
+                        <p> <b class=text-success>${{$data["max_bid"]->getBidValue()}}</b>
+                        by {{$data["max_bid"]->user->getName()}}</p>
                         <p>[{{$data["nbids"]}} @lang('items.bids')]</p>
                     @else
                         <i> @lang('items.no_bids')] </i>
@@ -99,15 +99,15 @@
             <ul class="list-group">
             @foreach($data["comments"] as $comment)
                 <li class="list-group-item">
-                    <b class="text-success">{{$comment->name}}:</b>
-                    @if(Auth::user()->id==$comment->user_id)
+                    <b class="text-success">{{$comment->user->getName()}}:</b>
+                    @if(Auth::user()->getId()==$comment->user->getId())
                         <form class="pull-right"action="{{ route('comment.delete', ['id' => $comment->user_id ]) }}" method="post">
                             <input class="btn btn-danger pull-right" type="submit" value="Delete" />
                             @method('delete')
                             @csrf
                         </form>
                     @endif
-                    <p class="ml-5 mt-3">{{$comment->description}} <i class="pull-right">{{$comment->created_at}}</i></p>
+                    <p class="ml-5 mt-3">{{$comment->getDescription()}} <i class="pull-right">{{$comment->getCreated_at()}}</i></p>
                 </li>
             @endforeach
             </ul>
