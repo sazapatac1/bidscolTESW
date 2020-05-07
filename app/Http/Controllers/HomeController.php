@@ -48,8 +48,12 @@ class HomeController extends Controller
     }
 
     public function exportPDF(){
-        $data["items"] = User::find(Auth::user()->id)->items;
-        $data["bids"] =  User::find(Auth::user()->id)->bids;
+        $data["items"] = Auth::user()->items;
+        $data["bids"] =  Bid::select('bids.bid_value','items.name', 'bids.created_at')
+                            ->join('items', 'bids.item_id', '=', 'items.id')
+                            ->where('bids.user_id', Auth::user()->id)
+                            ->orderBy('items.name', 'ASC')
+                            ->get();
         return PDF::loadView('home.pdf', compact('data'))->stream('archivo.pdf');
     }
 }

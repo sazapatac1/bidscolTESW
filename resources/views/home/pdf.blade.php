@@ -19,14 +19,20 @@
                 <p class="card-subtitle"><b>My products: </b></p>
             <br>
             @foreach($data["items"] as $item)
-                <a href="{{ route('item.show', ['id' => $item->getId()]) }}" class="list-group-item list-group-item-action">{{$item->name}}</a>
+                <li>
+                    <a href="{{ route('item.show', ['id' => $item->getId()]) }}" class="list-group-item list-group-item-action">{{$item->name}}</a>
+                </li>             
             @endforeach
             <br>
                 <p class="card-subtitle"><b>My bids: </b></p>
             <br>
             <ul class="list-group">
                 @foreach($data["bids"] as $bid)
-                    <li class="list-group-item">{{$bid->bid_value}} - {{$bid->item_id}}</li>
+                <li>
+                    <b>{{$bid->name}}:</b>
+                    ${{$bid->bid_value}}
+                    <i class="pull-right">{{$bid->created_at}}</i>
+                </li>    
                 @endforeach
             </ul>
         </div>
