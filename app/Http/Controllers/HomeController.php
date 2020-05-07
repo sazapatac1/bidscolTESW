@@ -45,8 +45,6 @@ class HomeController extends Controller
     public function exportPDF(){
         $data["items"] = User::find(Auth::user()->id)->items;
         $data["bids"] =  User::find(Auth::user()->id)->bids;
-        $pdf = PDF::loadView('home.pdf');
-
-        return $pdf->stream();
+        return PDF::loadView('home.pdf', compact('data'))->stream('archivo.pdf');
     }
 }
