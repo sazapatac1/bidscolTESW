@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class Item extends Model
 {
     // attributes id, name, description, status, initial_bid, current_bid, winner, start_date, final_date, created_at, updated_at
     // foreign_key category, user
     protected $fillable = ['name', 'description', 'status','initial_bid','current_bid','start_date','final_date', 'category_id', 'user_id'];
-
+    private $API_url_eur = '';
 
     public static function validate(Request $request)
     {
@@ -77,6 +78,27 @@ class Item extends Model
     public function getCurrent_bid()
     {
         return $this->attributes['current_bid'];
+    }
+
+    public function getCurrent_bid_cop()
+    {
+        $bid = $this->attributes['current_bid'];
+        $client = new Client([
+            'base_uri' => 'https://api.cambio.today/v1/quotes/USD/COP/json?quantity=1&key=4339|2TE63aa^nfxqKvSYe3f9oKaPn_jjsbw9',
+            'timeout' => 2.0,
+        ]); 
+
+        $response = $client->request('GET', '');
+        $contents = json_decode($response->getBody()->getContents());
+        foreach ($contents as $content){
+            $value = $content['value'];
+        }
+        $bid = $bid * $value;
+    }
+
+    public function getCurrent_bid_eur()
+    {
+        $bid = $this->attributes['current_bid'];
     }
 
     public function setCurrent_bid($current_bid)
