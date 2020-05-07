@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label>@lang('items.category')</label>
                             <br>
-                            <select name="category" class="form-control">
+                            <select name="category_id" class="form-control">
                             <option value ="" selected>Choose...</option>
                             @foreach($data["categories"] as $category)            
                                 <option value="{{$category->getId()}}">{{$category->getName()}}</option>

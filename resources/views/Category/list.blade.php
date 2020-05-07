@@ -36,11 +36,12 @@
                 @foreach($data["categories"] as $category)
                 <td>{{ $category->getId() }}</td>
                 <td>{{ $category->getName() }}</td>
-                <td><form action="{{ route('category.delete', ['id' => $category->getId() ]) }}" method="post">
-                            <input class="btn btn-danger" type="submit" value="Delete" />
-                            @method('delete')
-                            @csrf
-                        </form>
+                <td>
+                    <form action="{{ route('category.delete', ['id' => $category->getId() ]) }}" method="post">
+                        <input class="btn btn-danger" type="submit" value="Delete" />
+                        @method('delete')
+                        @csrf
+                    </form>
                 </td>
                 <td><button type="button" class="btn btn-success" onClick="window.location='{{ route('category.edit',['id' => $category->getId()]) }}'">
                 @lang('list.Edit')</button></td>   

@@ -28,11 +28,17 @@
                     <div class="text-center">
                         <a href="{{ route('item.show', ['id' => $item->getId()])}}" class="btn btn-success" style="width: 100px;">@lang('items.bid')</a>
                     </div>
-                @else
-                    <p class="card-text text-danger">{{ $item->getStatus() }}</p>
+                @elseif($item->getStatus() == 'Inactive')
+                    <p class="card-text text-warning">{{ $item->getStatus() }}</p>
                     <p class="card-text">{{ $item->getDaysLeft()}} @lang('items.days_left')</p>
                     <div class="text-center">
-                        <a href="#" class="btn btn-danger disabled" style="width: 100px;" disabled>@lang('items.bid')</a>
+                        <a href="#" class="btn btn-warning disabled" style="width: 100px;" disabled>x</a>
+                    </div>
+                @else
+                <p class="card-text text-danger">{{ $item->getStatus() }}</p>
+                    <div class="text-center">
+                        <br>
+                        <a href="{{ route('item.show', ['id' => $item->getId()])}}" class="btn btn-success mt-3" style="width: 120px;">@lang('items.see_winner')</a>
                     </div>
                 @endif
             </div>

@@ -21,21 +21,25 @@
             </ul>
             @endif
             <div class="list-groupm mt-2">
-            <p class="card-subtitle"><b>Name: </b>{{ Auth::user()->name}}</p>
+            <p class="card-subtitle"><b>@lang('user_profile.name'): </b>{{ Auth::user()->getName()}}</p>
             <br>
-            <p class="card-subtitle"><b>E-mail: </b>{{ Auth::user()->email}}</p>
+            <p class="card-subtitle"><b>@lang('user_profile.email'): </b>{{ Auth::user()->getEmail()}}</p>
             <br>
-            <p class="card-subtitle"><b>My products: </b></p>
+            <p class="card-subtitle"><b>@lang('user_profile.products'): </b></p>
             <br>
             @foreach($data["items"] as $item)
-                <a href="{{ route('item.show', ['id' => $item->getId()]) }}" class="list-group-item list-group-item-action">{{$item->name}}</a>
+                <a href="{{ route('item.show', ['id' => $item->getId()]) }}" class="list-group-item list-group-item-action">{{$item->getName()}} ({{$item->getStatus()}})</a>
             @endforeach
             <br>
-            <p class="card-subtitle"><b>My bids: </b></p>
+            <p class="card-subtitle"><b>@lang('user_profile.bids'): </b></p>
             <br>
             <ul class="list-group">
                 @foreach($data["bids"] as $bid)
-                    <li class="list-group-item">{{$bid->bid_value}} - {{$bid->item_id}}</li>
+                    <li class="list-group-item">
+                        <b>{{$bid->name}}: </b>
+                        ${{$bid->bid_value}} 
+                        <i class="pull-right">{{$bid->created_at}}</i>
+                    </li>
                 @endforeach
             </ul>
             </div>
