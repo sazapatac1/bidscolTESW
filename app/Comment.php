@@ -3,19 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class Comment extends Model
 {
-    //attributes id, description, rating, id_item, item_id, created_at, updated_at
-    protected $fillable = ['description', 'rating'];
+    //attributes id, description, created_at, updated_at
+    //foreign_key item_id, user_id
+    protected $fillable = ['description','user_id','item_id'];
 
     public static function validate(Request $request){
         $request->validate([
             "description" => "required",
-            "rating" => "required | numeric|gt:0"
+            "user_id" => "required",
+            "item_id" => "required"
         ]);
     }
+
 
     public function getId()
     {
@@ -37,14 +40,29 @@ class Comment extends Model
         $this->attributes['description'] = $desc;
     }
 
-    public function getRating()
+    public function getUserId()
     {
-        return $this->attributes['rating'];
+        return $this->attributes['user_id'];
     }
 
-    public function setRating($calif)
+    public function setUserId($user_id)
     {
-        $this->attributes['rating'] = $calif;
+        $this->attributes['user_id'] = $user_id;
+    }
+
+    public function getItemId()
+    {
+        return $this->attributes['item_id'];
+    }
+
+    public function setItemId($item_id)
+    {
+        $this->attributes['item_id'] = $item_id;
+    }
+
+    public function getCreated_at()
+    {
+        return $this->attributes['created_at'];
     }
 
     public function producto(){

@@ -114,9 +114,14 @@ class Item extends Model
         $this->attributes['final_date'] = $final_date;
     }
 
-    public function getCreatet_at()
+    public function getUser_id()
     {
-        return $this->attributes['createt_at'];
+        return $this->attributtes['user_id'];
+    }
+
+    public function getCreated_at()
+    {
+        return $this->attributes['created_at'];
     }
 
     public function getDaysLeft()

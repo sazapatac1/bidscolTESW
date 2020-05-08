@@ -39,32 +39,32 @@ class CategoryController extends Controller
             return redirect()->route('category.list')->with('success','Category created successfully!');
         }
         
-        public function showOne($id)
-        {
-            $category = Category::findOrFail($id);
-            $data['category'] = $category;
-            return view('category.show')->with("data",$data);
-        }
+    public function showOne($id)
+    {
+        $category = Category::findOrFail($id);
+        $data['category'] = $category;
+        return view('category.show')->with("data",$data);
+    }
 
-        public function deleteOne($id)
-        {
-            $data = []; //to be sent to the view
-            $category = Category::findOrFail($id);
-            $category->delete(); 
-            return redirect()->route('category.list')->with('success','Category deleted');
-        }
+    public function deleteOne($id)
+    {
+        $data = []; //to be sent to the view
+        $category = Category::findOrFail($id);
+        $category->delete(); 
+        return redirect()->route('category.list')->with('success','Category deleted');
+    }
 
-        public function editOne($id)
-        {
-            $category = Category::findOrFail($id);
-            return view('category.edit')->with('category',$category);
-        }
+    public function editOne($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('category.edit')->with('category',$category);
+    }
 
-        public function update(Request $request)
-        {                   
-            $category = Category::findOrFail($request->category_id);
-            $category->name = $request->name;
-            $category->save();
-            return redirect()->route('category.list')->with('success','Category edited');
-        }
+    public function update(Request $request)
+    {                   
+        $category = Category::findOrFail($request->category_id);
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('category.list')->with('success','Category edited');
+    }
 }
