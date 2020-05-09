@@ -6,19 +6,9 @@ use App\Bid;
 use App\Category;
 use App\Comment;
 use Illuminate\Http\Request;
-
+use App\Interfaces\ImageStorage;
 class ItemController extends Controller
 {
-
-    /*public function index()
-    {
-        $data = [];
-        $data["title"] = "Products";
-        $data["items"] = Item::orderBy("id")->get();
-
-        return view('item.index')->with("data", $data);
-    }*/
-
     public function index($option = 'all', $id = 0)
     {
         $data = [];
@@ -50,8 +40,12 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
+        $itemData = $request->except('_token', 'item_image');
+        $itemData['image_name'] = $request->item_image->getClientOriginalName();        
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request, $itemData['image_name']);
         Item::validate($request);
-        Item::create($request->only(["name","description","status", "initial_bid", "start_date", "final_date", "category_id", "user_id"]));
+        Item::create($itemData);
         return back()->with('success','Item created successfully!');
     }
 
