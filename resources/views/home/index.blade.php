@@ -14,9 +14,21 @@
                     @lang('searchbar.category')
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('item.index', ['option' => 'all', 'id' => 0]) }}">All</a>
                     @foreach($data["categories"] as $category)
-                            <a class="dropdown-item" href="#">{{$category->getName()}}</a>
+                            <a class="dropdown-item" href="{{ route('item.index', ['option' => 'category', 'id' => $category->getId()]) }}">{{$category->getName()}}</a>
                     @endforeach
+                </div>
+            </div>
+            <div class="dropdown">
+                <a class="btn btn-success dropdown-toggle mr-3" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @lang('searchbar.state')
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('item.index', ['option' => 'all', 'id' => 0]) }}">All</a>
+                    <a class="dropdown-item" href="{{ route('item.index', ['option' => 'state', 'id' => 'Active'])}}">@lang('items.active')</a>
+                    <a class="dropdown-item" href="{{ route('item.index', ['option' => 'state', 'id' => 'Inactive'])}}">@lang('items.inactive')</a>
+                    <a class="dropdown-item" href="{{ route('item.index', ['option' => 'state', 'id' => 'Finished'])}}">@lang('items.finished')</a>
                 </div>
             </div>
             <input type="text" class="col-sm-8 rounded-0" placeholder="@lang('searchbar.searchDescription')">
@@ -26,7 +38,7 @@
     <div class="text-right">
         <a href="{{ route('item.create') }}" class="btn btn-success mb-3" style="width: 200px;" disabled>@lang('items.sell')</a>
     </div>
-    <!--Carousel-->
+    <!--Carousel
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -48,7 +60,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <!--End Carousel-->          
+    End Carousel-->
 </div>
 @endsection
 

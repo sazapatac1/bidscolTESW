@@ -35,5 +35,6 @@ return[
     'comments' => 'Comments',
     'write_comments' => 'Write your comment',
     'send' => 'Send',
-    'all_comments' => 'All comments'
+    'all_comments' => 'All comments',
+    'finished' => 'Finished'
 ];

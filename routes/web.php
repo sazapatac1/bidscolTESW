@@ -17,12 +17,16 @@ Route::get('/profile','HomeController@profile')->name("home.profile");
 Route::get('/profile/download', 'HomeController@exportPDF')->name("home.pdf");
 
 //Item controller
-Route::get('/item/index', 'ItemController@index')->name("item.index");
+Route::get('/item/index/{option}/{id}', 'ItemController@index')->name("item.index");
 Route::get('/item/create', 'ItemController@create')->name("item.create");
 Route::post('/item/store', 'ItemController@store')->name("item.store");
 Route::get('/item/show/{id}', 'ItemController@show')->name("item.show");
 Route::post('/item/finishAuction', 'ItemController@finishAuction')->name("item.finish");
 Route::delete('/item/delete/{id}', 'ItemController@destroy')->name("item.delete");
+
+//list by filter
+Route::get('/item/listByCategory/{id}', 'ItemController@listByCategory')->name("item.listByCategory");
+Route::get('/item/listByState/{id}', 'ItemController@listByState')->name("item.listByState");
 
 //Bid controller
 Route::post('/bid/store', 'BidController@store')->name("bid.store");
