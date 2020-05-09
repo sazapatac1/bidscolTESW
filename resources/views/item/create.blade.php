@@ -18,7 +18,7 @@
                 </ul>
                 @endif
                 <div class="list-groupm mt-2">
-                    <form method="POST" action="{{ route('item.store') }}">
+                    <form method="POST" action="{{ route('item.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>@lang('items.name')</label>
@@ -39,10 +39,15 @@
                             @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <br>
+                            <input type="file" name="item_image"/>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>@lang('items.minimum_bid')</label>
-                                <input type="number" class="form-control" name="initial_bid"     placeholder="$"required>
+                                <input type="number" class="form-control" name="initial_bid" placeholder="$"required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>@lang('items.status')</label>

@@ -30,7 +30,7 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Future Left Side Links --> 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('item.index') }}">@lang('navbar.items')</a>
+                        <a class="nav-link" href="{{ route('item.index', ['option' => 'all', 'id' => 0]) }}">@lang('navbar.items')</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">@lang('navbar.about')</a>

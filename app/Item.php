@@ -9,7 +9,7 @@ class Item extends Model
 {
     // attributes id, name, description, status, initial_bid, current_bid, winner, start_date, final_date, created_at, updated_at
     // foreign_key category, user
-    protected $fillable = ['name', 'description', 'status','initial_bid','current_bid','start_date','final_date', 'category_id', 'user_id'];
+    protected $fillable = ['name', 'description', 'status','initial_bid', 'image_name', 'start_date','final_date', 'category_id', 'user_id'];
 
 
     public static function validate(Request $request)
@@ -19,6 +19,7 @@ class Item extends Model
             'description' => 'required',
             'status' => 'required',
             'initial_bid' => 'required | numeric | gt:0',
+            'item_image' => 'required',
             'start_date' => 'required | date',
             'final_date' => 'required | date'
         ]);
@@ -74,14 +75,13 @@ class Item extends Model
         $this->attributes['initial_bid'] = $initial_bid;
     }
 
-    public function getCurrent_bid()
-    {
-        return $this->attributes['current_bid'];
+    public function getImage_name(){
+        return $this->attributes['image_name'];
     }
 
-    public function setCurrent_bid($current_bid)
+    public function setImage_name($image_name)
     {
-        $this->attributes['current_bid'] = $current_bid;
+        $this->attributes['image_name'] = $image_name;
     }
 
     public function getWinner()
