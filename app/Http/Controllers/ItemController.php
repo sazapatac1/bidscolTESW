@@ -50,7 +50,6 @@ class ItemController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'initial_bid' => $request->initial_bid,
-            'current_bid' => $request->initial_bid,
             'start_date' => $request->start_date,
             'final_date' => $request->final_date,
             'category_id' => $request->category,

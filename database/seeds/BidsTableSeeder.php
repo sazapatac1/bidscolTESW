@@ -7,7 +7,7 @@ use App\User;
 class BidsTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds bid.
+     * Run the database seeds.
      *
      * @return void
      */

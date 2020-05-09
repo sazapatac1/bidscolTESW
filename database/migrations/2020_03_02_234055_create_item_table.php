@@ -20,7 +20,6 @@ class CreateItemTable extends Migration
             $table->string('description',255);
             $table->string('status',10);
             $table->integer('initial_bid');
-            $table->integer('final_bid')->default(0);
             $table->integer('winner')->default(0);
             $table->date('start_date');
             $table->date('final_date');
