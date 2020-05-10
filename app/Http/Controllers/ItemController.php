@@ -7,6 +7,9 @@ use App\Category;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Interfaces\ImageStorage;
+use App\Mail\WinnerMail;
+use Illuminate\Support\Facades\Mail;
+
 class ItemController extends Controller
 {
     public function index($option = 'all', $id = 0)
@@ -86,6 +89,7 @@ class ItemController extends Controller
                 ->first();
         $item->setWinner($winner->user->getId());
         $item->save();
+        Mail::to($winner->user->getEmail())->send(new WinnerMail);
         return back()->with('succes','Item finished successfully');
     }
 
