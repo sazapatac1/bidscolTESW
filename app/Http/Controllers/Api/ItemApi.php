@@ -5,12 +5,13 @@ use App\Http\Resources\Item as ItemResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
+use App\Category;
 
 class ItemApi extends Controller
 {
     public function index()
     {
-        return ItemResource::collection(Item::all());
+        return ItemResource::collection(Item::where("category_id",1)->get());
     }
 
     public function show($id)

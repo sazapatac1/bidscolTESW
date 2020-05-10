@@ -11,8 +11,8 @@ class Item extends JsonResource
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'initial_bid' => $this->getInitial_bid(),
-            'current_bid' => $this->getCurrent_bid(),
+            'Daysleft' => $this->getDaysLeft(),
+            'imagename' => $this->getImage_name(),
         ];
     }
 }
