@@ -19,4 +19,5 @@ return[
     'bid_value' => 'Valor puja',
     'created_at' => 'Creada el',
     'List_of_comments' => 'Lista de comentarios',
+    'categoryfamous' => "Categorias frecuentes",
 ];
