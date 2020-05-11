@@ -14,6 +14,11 @@
 //Rutas de admin
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin','UserController@admin')->name("user.admin");
+    //users
+    Route::get('user/list', 'UserController@showList')->name("user.list");
+    Route::get('user/edit/{id}', 'UserController@editOne')->name("user.edit");
+    Route::post('user/update', 'UserController@update')->name("user.update");
+    Route::delete('/user/delete/{id}', 'UserController@deleteOne')->name("user.delete");
     //items
     Route::get('item/list', 'ItemController@showList')->name("item.list");
     Route::get('item/edit/{id}', 'ItemController@editOne')->name("item.edit");
