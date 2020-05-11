@@ -43,26 +43,37 @@ class CommentController extends Controller
     }
 
 
-    public function edit($id)
+    public function showList()
     {
-        $data = [];
-        $data["title"] = "Edit comment";
-        $data["comment"]=Comment::find($id);
-        return view('comment.edit')->with("data", $data);
+        $data = []; //to be sent to the view
+        $data["title"] = "Comments";
+        $orderBy = 'id';
+        $data["comments"] = Comment::orderBy($orderBy,'asc')->get();
+        return view('comment.list')->with("data",$data);
+        
     }
 
+    public function editOne($id)
+    {
+        $comment = Comment::findOrFail($id);
+        return view('comment.edit')->with('comment',$comment);
+    }
 
     public function update(Request $request, Comment $comment)
     {
-        Comment::validate($request);
-        $comment->update($request->all());
-        return redirect()->route('comment.index')->with('succes','Comment update successfully');
+        $comment = Comment::findOrFail($request->comment_id);
+        $comment->setDescription($request->description);
+        $comment->save();
+        return redirect()->route('comment.list')->with('success','Comment edited');
     }
 
-
-    public function destroy($id)
+    public function deleteOne($id)
     {
-        Comment::destroy($id);
-        return back()->with('success','Comment deleted successfully!');
+        $comment = Comment::findOrFail($id);
+        $comment->delete(); 
+        return back()->with('success','Comment deleted');
     }
+
+
+    
 }

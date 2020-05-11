@@ -101,7 +101,7 @@
                 <li class="list-group-item">
                     <b class="text-success">{{$comment->user->getName()}}:</b>
                     @if(Auth::user()->getId()==$comment->user->getId())
-                        <form class="pull-right"action="{{ route('comment.delete', ['id' => $comment->user_id ]) }}" method="post">
+                        <form class="pull-right" action="{{ route('comment.delete', ['id' => $comment->getId() ]) }}" method="post">
                             <input class="btn btn-danger pull-right" type="submit" value="Delete" />
                             @method('delete')
                             @csrf

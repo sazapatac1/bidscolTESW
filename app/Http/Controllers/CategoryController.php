@@ -12,10 +12,7 @@ class CategoryController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Categories";
         $orderBy = 'name';
-        $category = Category::orderBy($orderBy,'asc')->get();
-        $data["orderBy"] = $orderBy;
-        $data["name"] = "List of categories";
-        $data["categories"] = $category;
+        $data["categories"] = Category::orderBy($orderBy,'asc')->get();
         return view('category.list')->with("data",$data);
         
     }
@@ -46,14 +43,6 @@ class CategoryController extends Controller
         return view('category.show')->with("data",$data);
     }
 
-    public function deleteOne($id)
-    {
-        $data = []; //to be sent to the view
-        $category = Category::findOrFail($id);
-        $category->delete(); 
-        return redirect()->route('category.list')->with('success','Category deleted');
-    }
-
     public function editOne($id)
     {
         $category = Category::findOrFail($id);
@@ -63,8 +52,15 @@ class CategoryController extends Controller
     public function update(Request $request)
     {                   
         $category = Category::findOrFail($request->category_id);
-        $category->name = $request->name;
+        $category->setName($request->name);
         $category->save();
         return redirect()->route('category.list')->with('success','Category edited');
+    }
+
+    public function deleteOne($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete(); 
+        return redirect()->route('category.list')->with('success','Category deleted');
     }
 }
