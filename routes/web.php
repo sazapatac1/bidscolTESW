@@ -40,11 +40,9 @@ Route::delete('/comment/delete/{id}', 'CommentController@destroy')->name("commen
 Route::get('/comment/showspecific/{id}', 'CommentController@showspecific')->name("comment.showspecific");
 
 //FavoritesList controller
-Route::get('/favoritesList/index', 'FavoritesListController@index')->name("favoritesList.index");
-Route::get('/favoritesList/create', 'FavoritesListControllerController@create')->name("favoritesList.create");
-Route::post('/favoritesList/save', 'FavoritesListControllerController@store')->name("favoritesList.store");
-Route::get('/favoritesList/show/{id}', 'FavoritesListControllerController@show')->name("favoritesList.show");
-Route::delete('/favoritesList/delete/{id}', 'FavoritesListControllerController@destroy')->name("favoritesList.delete");
+Route::post('wishlist/{product}', 'WishlistController@update')->name("wishlist.update");
+Route::get('wishlist', 'WishlistController@index')->name("wishlist.index");
+Route::post('wishlist/delete/{id}', 'WishlistController@destroy')->name("wishlist.destroy");
 
 //category controller
 Route::get('category/list', 'CategoryController@showList')->name("category.list");

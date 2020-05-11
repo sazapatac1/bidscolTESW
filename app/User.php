@@ -28,6 +28,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        static::created(function ($user) {
+            Wishlist::create(['user_id' => $user->id]);
+        });
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -62,6 +70,6 @@ class User extends Authenticatable
     }
 
     public function favoriteLists(){
-        return $this->belongsTo(Comment::class);
+        return $this->hasOne(Wishlist::class);
     }
 }
