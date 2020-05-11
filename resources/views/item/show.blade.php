@@ -13,17 +13,14 @@
                 @csrf
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
-<<<<<<< HEAD
                 @if($data["wishitem"]=="False")
                     <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
                 @else
                     <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.add')</button>
                 @endif
             </form>             
-=======
                 <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
             </form>
->>>>>>> c410a96d074b22cb7c9f57bb7b45074bf2467b79
             @if($data["item"]->getStatus()=='Active')
                 [<b class="text-success">@lang('items.active')</b>]
             @elseif($data["item"]->getStatus()=='Inactive')
