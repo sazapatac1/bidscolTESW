@@ -16,6 +16,38 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function showList()
+    {
+        $data = []; //to be sent to the view
+        $data["title"] = "Users";
+        $orderBy = 'id';
+        $data["users"] = User::orderBy($orderBy,'asc')->get();
+        return view('user.list')->with("data",$data);
+        
+    }
+
+    public function editOne($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.edit')->with('user',$user);
+    }
+
+    public function update(Request $request)
+    {                   
+        $user = User::findOrFail($request->user_id);
+        $user->setName($request->name);
+        $user->setEmail($request->email);
+        $user->save();
+        return redirect()->route('user.list')->with('success','User edited');
+    }
+
+    public function deleteOne($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete(); 
+        return back()->with('success','User deleted');
+    }
+
     public function profile(){
         $data["title"] = "Profile";
         $data["items"] = Auth::user()->items;

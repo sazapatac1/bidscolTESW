@@ -9,16 +9,21 @@
     <div class="card">
         <div class="card-header bg-dark text-white">
             @lang('items.details')
-            <form class="mt-5 pull-right" method="POST" action="{{ route('wishlist.store')}}">
+            <form class="pull-right" method="POST" action="{{ route('wishlist.store')}}">
                 @csrf
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
+<<<<<<< HEAD
                 @if($data["wishitem"]=="False")
                     <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
                 @else
                     <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.add')</button>
                 @endif
             </form>             
+=======
+                <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
+            </form>
+>>>>>>> c410a96d074b22cb7c9f57bb7b45074bf2467b79
             @if($data["item"]->getStatus()=='Active')
                 [<b class="text-success">@lang('items.active')</b>]
             @elseif($data["item"]->getStatus()=='Inactive')
@@ -99,7 +104,7 @@
                 @csrf
                 <label for="exampleFormControlTextarea1">@lang('items.write_comments')</label>
                 <textarea class="form-control" name="description" rows="2"></textarea>
-                <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <button class="btn btn-success mt-2 pull-right" type="submit" value="Send">@lang('items.send')</button>
             </form>

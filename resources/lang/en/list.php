@@ -19,4 +19,6 @@ return[
     'bid_value' => 'Bid value',
     'created_at' => 'Created at',
     'List_of_comments' => 'List of comments',
+    'List_of_users' => 'List of users',
+    'email' => 'E-mail'
 ];
