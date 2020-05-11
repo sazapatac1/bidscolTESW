@@ -7,7 +7,7 @@
     <div class="col-md-8">
     @include('util.message')
         <div class="card">
-            <div class="card-header"><h4> @lang('items.createitem') </h4></div>
+            <div class="card-header"><h4>@lang('items.createitem') </h4></div>
             <div class="card-body">
                 @if($errors->any())
                 <h4>The form contains some errors</h4>
@@ -33,10 +33,10 @@
                             <label>@lang('items.category')</label>
                             <br>
                             <select name="category_id" class="form-control">
-                            <option value ="" selected>Choose...</option>
-                            @foreach($data["categories"] as $category)            
+                                <option value ="" selected>Choose...</option>
+                                @foreach($data["categories"] as $category)            
                                 <option value="{{$category->getId()}}">{{$category->getName()}}</option>
-                            @endforeach
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

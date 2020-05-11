@@ -13,7 +13,7 @@
                 @csrf
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
-                @if($data["wishitem"]=="False")
+                @if($data["hasitems"])
                     <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
                 @else
                     <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.add')</button>

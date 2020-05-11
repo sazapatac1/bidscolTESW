@@ -39,9 +39,9 @@ class Bid extends Model
         $this->attributes['bid_value'] = $val;
     }
 
-    public function getDate()
+    public function getCreated_at()
     {
-        $this->attributes['created_at'];
+        return $this->attributes['created_at'];
     }
 
     public function item()

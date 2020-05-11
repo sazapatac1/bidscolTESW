@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class BidController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $data = [];
@@ -21,11 +17,7 @@ class BidController extends Controller
         return view('bid.index')->with("data", $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         $data = [];
@@ -34,12 +26,7 @@ class BidController extends Controller
         return view('bid.create')->with("data", $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         Bid::validate($request);
@@ -47,12 +34,7 @@ class BidController extends Controller
         return back()->with('success','Bid done!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         $data = [];
@@ -62,17 +44,35 @@ class BidController extends Controller
         return view('bid.show')->with("data", $data);
     }
     
-    
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function showList()
     {
-        Bid::destroy($id);
-        return redirect()->route('home.index');
+        $data = []; //to be sent to the view
+        $data["title"] = "Bids";
+        $orderBy = 'created_at';
+        $data["bids"] = Bid::orderBy($orderBy,'asc')->get();
+        return view('bid.list')->with("data",$data);
+        
     }
+
+    public function editOne($id)
+    {
+        $bid = Bid::findOrFail($id);
+        return view('bid.edit')->with('bid',$bid);
+    }
+
+    public function update(Request $request)
+    {    
+        $bid = Bid::findOrFail($request->bid_id);
+        $bid->setBidValue($request->bid_value);
+        $bid->save();
+        return redirect()->route('bid.list')->with('success','Bid edited');
+    }
+
+    public function deleteOne($id)
+    {
+        $bid = Bid::findOrFail($id);
+        $bid->delete(); 
+        return redirect()->route('bid.list')->with('success','Bid deleted');
+    }
+    
 }

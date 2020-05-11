@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Mail;
 
 class ItemController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index($option = 'all', $id = 0)
     {
         $data = [];
@@ -25,11 +30,11 @@ class ItemController extends Controller
         } else if($option == 'category'){  
             $data["items"] = Item::where('category_id', $id)
                             ->orderBy("id")->get();
-            $data["subtitle"] = $data["items"][0]->category->getName();
+            $data["subtitle"] = Category::find($id)->getName();
         } else if($option == 'state'){
             $data["items"] = Item::where('status', $id)
                             ->orderBy("id")->get();
-            $data["subtitle"] = $data["items"][0]->getStatus();
+            $data["subtitle"] = $id;
         }
         return view('item.index')->with("data", $data);
     }
@@ -64,7 +69,6 @@ class ItemController extends Controller
             $data["wishitem"] = "False";
         } else {
             $data["wishitem"] = "True";
-        }
         $data["max_bid"] = Bid::where('item_id',$id)
                             ->orderBy('bid_value','DESC')
                             ->first();
@@ -73,19 +77,36 @@ class ItemController extends Controller
         return view('item.show')->with("data", $data);
     }
 
-    public function edit($id)
+    public function showList()
     {
-        $data = [];
-        $data["title"] = "Edit user";
-        $data["item"]=Item::find($id);
-        return view('item.edit')->with("data", $data);
+        $data = []; //to be sent to the view
+        $data["title"] = "Products";
+        $orderBy = 'name';
+        $data["items"] = Item::orderBy($orderBy,'asc')->get();
+        return view('item.list')->with("data",$data);
+        
     }
 
-    public function update(Request $request, $id)
+    public function editOne($id)
     {
-        User::validate($request);
-        $user->update($request->all());
-        return redirect()->route('item.index')->with('succes','Item update successfully');
+        $data = []; //to be sent to the view
+        $data["item"] = Item::findOrFail($id);
+        $data["categories"] = Category::all();
+        return view('item.edit')->with('data',$data);
+    }
+
+    public function update(Request $request)
+    {
+        $item = Item::findOrFail($request->item_id);
+        $item->setName($request->name);
+        $item->setDescription($request->description);
+        $item->setStatus($request->status);
+        $item->setInitial_bid($request->initial_bid);
+        $item->setStart_date($request->start_date);
+        $item->setFinal_date($request->final_date);
+        $item->setCategory_id($request->category_id);
+        $item->save();
+        return redirect()->route('item.list')->with('success','Product edited');
     }
 
     public function finishAuction(Request $request)
@@ -101,27 +122,14 @@ class ItemController extends Controller
         return back()->with('succes','Item finished successfully');
     }
 
-    public function listByCategory($id)
+    public function deleteOne($id)
     {
-        $data = [];
-        $data["categories"] = Category::all();
-        $data["items"] = Item::where('category_id', $id)
-                        ->orderBy("id")->get();
-        return view('item.listByCategory')->with("data", $data);
-    }
-
-    public function listByState($id)
-    {
-        $data = [];
-        $data["categories"] = Category::all();
-        $data["items"] = Item::where('status', $id)
-                        ->orderBy("id")->get();
-        return view('item.listByCategory')->with("data", $data);
-    }
-
-    public function destroy($id)
-    {
-        Item::destroy($id);
-        return redirect()->route('home.index');
+        $item = Item::findOrFail($id);
+        //delete item image
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->delete($item->getImage_name());
+        //delete item
+        $item->delete(); 
+        return redirect()->route('item.list')->with('success','Item deleted successfully');
     }
 }

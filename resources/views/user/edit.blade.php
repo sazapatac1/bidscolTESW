@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
     <div class="col-md-8">
             <div class="card">
-                <div class="card-header">@lang('edit.Edit_category') <b>{{ $category->getName() }}</b></div>
+                <div class="card-header">@lang('edit.Edit_user') <b>{{ $user->getName() }}</b></div>
                 <div class="card-body">
                 @if($errors->any())
                 <ul id="errors">
@@ -15,11 +15,14 @@
                     @endforeach
                 </ul>
                 @endif
-                <form method="POST" action="{{ route('category.update')}}">
+                <form method="POST" action="{{ route('user.update')}}">
                     @csrf
-                    <label>@lang('items.name')</label>
-                    <input class="form-control" type="text" name="name" value="{{ $category->getName() }}" />
-                    <input name="category_id" type="hidden" value="{{$category->getId()}}">
+                    <label>@lang('user.name')</label>
+                    <input class="form-control" type="text" name="name" value="{{ $user->getName() }}" />
+                    <br>
+                    <label>@lang('user.email')</label>
+                    <input class="form-control  @error('email') is-invalid @enderror" type="email" name="email" value="{{ $user->getEmail() }}" required autocomplete="email"/>
+                    <input name="user_id" type="hidden" value="{{$user->getId()}}">
                     <button class="btn btn-success mt-2" type="submit" value="Send">@lang('edit.Edit')</button>
                 </form>
                 </div>
