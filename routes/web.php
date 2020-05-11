@@ -64,12 +64,10 @@ Route::get('/comment/show', 'CommentController@show')->name("comment.show");
 Route::delete('/comment/delete/{id}', 'CommentController@deleteOne')->name("comment.delete");
 
 
-//FavoritesList controller
-Route::get('/favoritesList/index', 'FavoritesListController@index')->name("favoritesList.index");
-Route::get('/favoritesList/create', 'FavoritesListControllerController@create')->name("favoritesList.create");
-Route::post('/favoritesList/save', 'FavoritesListControllerController@store')->name("favoritesList.store");
-Route::get('/favoritesList/show/{id}', 'FavoritesListControllerController@show')->name("favoritesList.show");
-Route::delete('/favoritesList/delete/{id}', 'FavoritesListControllerController@destroy')->name("favoritesList.delete");
+//WishList controller
+Route::get('wishlist', 'WishlistController@show')->name("wishlist.show");
+Route::post('wishlist/store', 'WishlistController@store')->name("wishlist.store");
+Route::delete('wishlist/delete/{id}', 'WishlistController@deleteOne')->name("wishlist.delete");
 
 
 Auth::routes();

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class Category extends Model
 {
@@ -12,7 +12,7 @@ class Category extends Model
 
     public static function validate(Request $request){
         $request->validate([
-            "name" => "required"
+            "name" => "required",
         ]);
     }
 
