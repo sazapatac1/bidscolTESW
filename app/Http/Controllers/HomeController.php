@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Bid;
 use App\Category;
+use Http;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $apiCurrency = Http::get('http://www.floatrates.com/daily/cop.json');
+        $cambioMoneda = $apiCurrency->json();
+
+        $apiExercise = Http::get('http://18.206.205.89/public/api/routines');
+        $rutinasEjercicio = $apiExercise->json();
+
         $data["categories"] = Category::all();
-        return view('home.index')->with("data",$data);
+        return view('home.index', compact('cambioMoneda', 'rutinasEjercicio'))->with("data",$data);
     }
 
     public function info()

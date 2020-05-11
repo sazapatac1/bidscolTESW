@@ -61,6 +61,49 @@
         </a>
     </div>
     End Carousel-->
+
+    <!-- api money -->
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <td colspan="5"><strong> @lang('apis.currency_exchange_rate') </strong></td>
+            </tr>
+            <tr>
+                <th>@lang('apis.date')</th>
+                <th>@lang('apis.euro')</th>
+                <th>@lang('apis.dollar')</th>
+                <th>@lang('apis.yen')</th>
+                <th>@lang('apis.pound_sterling')</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ $cambioMoneda['usd']['date'] }}</td>
+                <td>{{ bcdiv($cambioMoneda['eur']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['usd']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['jpy']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['gbp']['inverseRate'], 1,2) }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- api gym -->
+    <div class="container">
+        <h6 class = "text-center"> @lang('apis.maybe_it_may_interest_you') </h6>
+        <div class=row>
+            @foreach($rutinasEjercicio['data'] as $rutinas)
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title"> {{ $rutinas['exercise']['name'] }} </h6>
+                        <p class = "card-text"> {{ $rutinas['exercise']['description'] }} </p>
+                        <a href="#" class="btn btn-success"> @lang('apis.see_exercise') </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 </div>
 @endsection
 
