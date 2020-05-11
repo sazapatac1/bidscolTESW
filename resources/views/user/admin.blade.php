@@ -24,11 +24,11 @@
             <br>
             <p class="card-subtitle"><b>@lang('user_profile.email'): </b>{{ Auth::user()->getEmail()}}</p>
             <br>
-            <a href="{{route('item.list')}}" class="list-group-item list-group-item-action">Users</a>
-            <a href="{{route('item.list')}}" class="list-group-item list-group-item-action">Products</a>
-            <a href="{{route('category.list')}}" class="list-group-item list-group-item-action">Categories</a>
-            <a href="{{route('bid.list')}}" class="list-group-item list-group-item-action">Bids</a>
-            <a href="{{route('comment.list')}}" class="list-group-item list-group-item-action">Comments</a>
+            <a href="{{route('user.list')}}" class="list-group-item list-group-item-action">@lang('admin.users')</a>
+            <a href="{{route('item.list')}}" class="list-group-item list-group-item-action">@lang('admin.products')</a>
+            <a href="{{route('category.list')}}" class="list-group-item list-group-item-action">@lang('admin.categories')</a>
+            <a href="{{route('bid.list')}}" class="list-group-item list-group-item-action">@lang('admin.bids')</a>
+            <a href="{{route('comment.list')}}" class="list-group-item list-group-item-action">@lang('admin.comments')</a>
         </div>
         </div>
     </div>

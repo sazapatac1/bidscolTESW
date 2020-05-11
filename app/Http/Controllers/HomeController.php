@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Bid;
+use App\Item;
 use App\Category;
 use Http;
 
@@ -27,6 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //statistics
+        $data["biggest_bid"] = Bid::OrderBy('bid_value','desc')->first();
+        $data["mostItem_bids"] = Item::where('status','Active')->withCount('bids')->orderBy('bids_count', 'desc')->first();
+        $data["mostItem_wishLists"] = Item::where('status','Active')->withCount('wishlists')->orderBy('wishlists_count', 'desc')->first();
+
+        //Apis
         $apiCurrency = Http::get('http://www.floatrates.com/daily/cop.json');
         $cambioMoneda = $apiCurrency->json();
 

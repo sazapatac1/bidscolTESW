@@ -118,6 +118,10 @@ class ItemController extends Controller
     public function deleteOne($id)
     {
         $item = Item::findOrFail($id);
+        //delete item image
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->delete($item->getImage_name());
+        //delete item
         $item->delete(); 
         return redirect()->route('item.list')->with('success','Item deleted successfully');
     }

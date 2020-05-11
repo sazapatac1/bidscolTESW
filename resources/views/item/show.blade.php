@@ -9,12 +9,12 @@
     <div class="card">
         <div class="card-header bg-dark text-white">
             @lang('items.details')
-            <form class="mt-5 pull-right" method="POST" action="{{ route('wishlist.store')}}">
+            <form class="pull-right" method="POST" action="{{ route('wishlist.store')}}">
                 @csrf
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
                 <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
-            </form>             
+            </form>
             @if($data["item"]->getStatus()=='Active')
                 [<b class="text-success">@lang('items.active')</b>]
             @elseif($data["item"]->getStatus()=='Inactive')
