@@ -26,6 +26,19 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                        @if(count(config('app.languages')) > 1)
+                            <li class="nav-item dropdown d-md-down-none">
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ strtoupper(app()->getLocale()) }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    @foreach(config('app.languages') as $langLocale => $langName)
+                                        <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
+                                    @endforeach
+                                </div>
+                            </li>
+                        @endif
                     <!-- Future authentication Links -->           
                 <ul class="navbar-nav ml-auto">
                     <!-- Future Left Side Links --> 
