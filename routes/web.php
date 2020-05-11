@@ -39,10 +39,10 @@ Route::get('/comment/show', 'CommentController@show')->name("comment.show");
 Route::delete('/comment/delete/{id}', 'CommentController@destroy')->name("comment.delete");
 Route::get('/comment/showspecific/{id}', 'CommentController@showspecific')->name("comment.showspecific");
 
-//FavoritesList controller
-Route::post('wishlist/{product}', 'WishlistController@update')->name("wishlist.update");
-Route::get('wishlist', 'WishlistController@index')->name("wishlist.index");
-Route::post('wishlist/delete/{id}', 'WishlistController@destroy')->name("wishlist.destroy");
+//WishList controller
+Route::get('wishlist', 'WishlistController@show')->name("wishlist.show");
+Route::post('wishlist/store', 'WishlistController@store')->name("wishlist.store");
+Route::delete('wishlist/delete/{id}', 'WishlistController@deleteOne')->name("wishlist.delete");
 
 //category controller
 Route::get('category/list', 'CategoryController@showList')->name("category.list");

@@ -16,13 +16,13 @@ class WishlistController extends Controller
      */
     public function show()
     {
-        $user = Auth::id();
-        $wishlist_id = Wishlist::where('user_id',$user);
-        if (count($wishlist_id) == 0) {
+        $user = Auth::user()->getId();
+        $wishlist = Wishlist::where('user_id',$user)->get();
+        if (!$wishlist) {
             $message = 'You don´t have any wishes yet';
-            return view('wishlist.index')->with(["message", $message]);
+            return view('wishlist.show')->with(["message", $message]);
         }
-        return view('wishlist.show')->with(['wishlist' => $wishlist_id]);
+        return view('wishlist.show')->with(['wishlist' => $wishlist]);
     }
 
     
@@ -61,6 +61,13 @@ class WishlistController extends Controller
     public function update(Request $request, Item $item, User $user)
     {
 
+    }
+
+    public function deleteOne($id)
+    {
+        $wishlist = Wishlist::findOrFail($id);
+        $wishlist->delete(); 
+        return back()->with('success','Item deleted from Wishlist');
     }
 
 }
