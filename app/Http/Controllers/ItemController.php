@@ -8,6 +8,8 @@ use App\Comment;
 use Illuminate\Http\Request;
 use App\Interfaces\ImageStorage;
 use App\Mail\WinnerMail;
+use App\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class ItemController extends Controller
@@ -57,6 +59,12 @@ class ItemController extends Controller
         $data = [];
         $data["title"] = "Product";
         $data["item"] = Item::find($id);
+        $wishitem = Wishlist::where('item_id',$id)->where('user_id', Auth::user()->getId())->get();
+        if($wishitem){
+            $data["wishitem"] = "False";
+        } else {
+            $data["wishitem"] = "True";
+        }
         $data["max_bid"] = Bid::where('item_id',$id)
                             ->orderBy('bid_value','DESC')
                             ->first();
