@@ -10,7 +10,7 @@
         <div class="card-header">
             <h4> @lang('user_profile.profile') </h4>
             <div class="text-right">
-                <a href="{{ route('home.pdf') }}" class="btn btn-success mb-3" style="width: 200px;" disabled>@lang('user_profile.download')</a>
+                <a href="{{ route('user.pdf') }}" class="btn btn-success mb-3" style="width: 200px;" disabled>@lang('user_profile.download')</a>
             </div>    
         </div>
         <div class="card-body">
@@ -40,7 +40,7 @@
                     <li class="list-group-item">
                         <b>{{$bid->item->getName()}}: </b>
                         ${{$bid->getBidValue()}} 
-                        <i class="pull-right">{{$bid->getCreated_at}}</i>
+                        <i class="pull-right">{{$bid->getCreated_at()}}</i>
                     </li>
                 @endforeach
             </ul>

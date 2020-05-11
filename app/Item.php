@@ -119,6 +119,10 @@ class Item extends Model
         return $this->attributtes['user_id'];
     }
 
+    public function setCategory_id($category_id)
+    {
+        $this->attributes['category_id'] = $category_id;
+    }
     public function getCreated_at()
     {
         return $this->attributes['created_at'];
