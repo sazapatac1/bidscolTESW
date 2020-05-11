@@ -9,18 +9,16 @@
     <div class="card">
         <div class="card-header bg-dark text-white">
             @lang('items.details')
-            <form class="pull-right" method="POST" action="{{ route('wishlist.store')}}">
+            <form class="mt-5 pull-right" method="POST" action="{{ route('wishlist.store')}}">
                 @csrf
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
-                @if($data["wishitem"]=="False")
+                @if($data["hasitems"])
                     <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
                 @else
                     <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.add')</button>
                 @endif
             </form>             
-                <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
-            </form>
             @if($data["item"]->getStatus()=='Active')
                 [<b class="text-success">@lang('items.active')</b>]
             @elseif($data["item"]->getStatus()=='Inactive')
@@ -101,7 +99,7 @@
                 @csrf
                 <label for="exampleFormControlTextarea1">@lang('items.write_comments')</label>
                 <textarea class="form-control" name="description" rows="2"></textarea>
-                <input name="user_id" type="hidden" value="{{Auth::user()->getId()}}">
+                <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
                 <input name="item_id" type="hidden" value="{{$data['item']->getId()}}">
                 <button class="btn btn-success mt-2 pull-right" type="submit" value="Send">@lang('items.send')</button>
             </form>
@@ -113,7 +111,7 @@
                 <li class="list-group-item">
                     <b class="text-success">{{$comment->user->getName()}}:</b>
                     @if(Auth::user()->getId()==$comment->user->getId())
-                        <form class="pull-right" action="{{ route('comment.delete', ['id' => $comment->getId() ]) }}" method="post">
+                        <form class="pull-right"action="{{ route('comment.delete', ['id' => $comment->user_id ]) }}" method="post">
                             <input class="btn btn-danger pull-right" type="submit" value="Delete" />
                             @method('delete')
                             @csrf

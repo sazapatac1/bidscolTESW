@@ -69,7 +69,6 @@ class ItemController extends Controller
             $data["wishitem"] = "False";
         } else {
             $data["wishitem"] = "True";
-        }        
         $data["max_bid"] = Bid::where('item_id',$id)
                             ->orderBy('bid_value','DESC')
                             ->first();
