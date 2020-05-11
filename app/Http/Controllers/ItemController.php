@@ -64,11 +64,7 @@ class ItemController extends Controller
         $data = [];
         $data["title"] = "Product";
         $data["item"] = Item::find($id);
-        $wishitem = Wishlist::where('item_id',$id)->where('user_id', Auth::user()->getId())->get();
-        if($wishitem){
-            $data["wishitem"] = "False";
-        } else {
-            $data["wishitem"] = "True";}
+        $data["wishitem"] = Wishlist::where('item_id',$id)->where('user_id', Auth::user()->getId())->first();
         $data["max_bid"] = Bid::where('item_id',$id)
                             ->orderBy('bid_value','DESC')
                             ->first();
