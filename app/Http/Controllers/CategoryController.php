@@ -30,14 +30,11 @@ class CategoryController extends Controller
     
     public function save(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            ]);
+        Category::validate($request);            
+        Category::create($request->only(["name"]));
             
-            Category::create($request->only(["name"]));
-            
-            return redirect()->route('category.list')->with('success','Category created successfully!');
-        }
+        return redirect()->route('category.list')->with('success','Category created successfully!');
+    }
         
     public function showOne($id)
     {

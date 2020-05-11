@@ -144,7 +144,7 @@ class Item extends Model
 
     public function wishlists()
     {
-        return $this->belongsToMany(Wishlist::class);
+        return $this->hasMany(Wishlist::class);
     }
 
     public function user(){

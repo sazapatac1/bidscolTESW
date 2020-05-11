@@ -14,30 +14,18 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show()
     {
         $user = Auth::id();
-        $user_id = User::find($user);
-        $wish = $user_id->wishlist->items->get();
-        if (count($wish) == 0) {
-            $data = [];
-            $data["wishlist"] = $wish;
-            $data["message"] = 'You don´t have any wishes yet';
-            return view('wishlist.index')->with(["data", $data]);
+        $wishlist_id = Wishlist::where('user_id',$user);
+        if (count($wishlist_id) == 0) {
+            $message = 'You don´t have any wishes yet';
+            return view('wishlist.index')->with(["message", $message]);
         }
-        return view('wishlist.index')->with(['wishlist' => $wish]);
+        return view('wishlist.show')->with(['wishlist' => $wishlist_id]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -46,22 +34,13 @@ class WishlistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Wishlist::validate($request);            
+        Wishlist::create($request->only(["user_id","item_id"]));
+            
+        return back()->with('success','Added to your wishlist');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        $user_id = Auth::id();
-        $user = User::find($user_id);
-        $wish = $user->wishlist->items()->get();
-        return view('wishlist.show')->with('wishlist', $wish);
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,24 +60,7 @@ class WishlistController extends Controller
      */
     public function update(Request $request, Item $item, User $user)
     {
-        $request->user()->wishlist->items()->attach($item->id);
-        $user= $request->user()->id;
-        $wishlist = Wishlist::where('user_id', '=', $user)->get();
-        return back()->with('wishlist', $wishlist);
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id, Request $request)
-    {
-        $request->user()->wishlist->items()->detach($id);
-        $user_id = Auth::id();
-        $user = User::find($user_id);
-        $wish = $user->wishlist->items()->get();
-        return back()->with('wishlist', $wish);
-    }
 }

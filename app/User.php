@@ -28,15 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function boot()
-    {
-        parent::boot();
-        static::created(function ($user) {
-            Wishlist::create(['user_id' => $user->id]);
-        });
-    }
-
-    /**
+       /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -69,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Bid::class);
     }
 
-    public function favoriteLists(){
-        return $this->hasOne(Wishlist::class);
+    public function wishLists(){
+        return $this->hasMany(Wishlist::class);
     }
 }

@@ -25,10 +25,12 @@
                             @foreach($wishlist as $wish)
                                 <tr>
                                     <td>
-                                        <a href="{{url('products/'.$wish->id)}}">{{ $wish->name }}</a>
+                                        <a href="{{}}">{{ $wish->item->getName() }}</a>
                                     </td>
-                                    <td>{{str_limit($wish->description, 120)}}</td>
-                                    <td>{{ $wish->priceOutput }}</td>
+                                    <td>{{ $wish->item->getStatus() }}</td>
+                                    <td>{{ $wish->item->category->getName() }}</td>
+                                    <td>{{ $wish->item->getInitial_bid() }}</td>
+                                    <td>{{ $wish->item->getDaysLeft() }}</td>
                                     <td>
                                         <a href="{{url('products/'.$wish->id)}}">
                                             <img class="img-responsive" src="../img/{{$wish->urlImage}}" alt=""/>
