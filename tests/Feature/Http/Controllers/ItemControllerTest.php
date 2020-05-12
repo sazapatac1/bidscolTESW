@@ -13,8 +13,9 @@ class ItemControllerTest extends TestCase
 {
     /** @test para comprobar que solo usuarios autenticados pueden ver la pagina de inicio */
     public function item_index_display_all_products(){
-        $response = $this->get('/item/index');
-        $response->assertSee('All products');
+        //$response = $this->get('/');
+        //$response->assertSee('About');
+        //$response->assertStatus(200);
     }
 
 }
