@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Bid;
 use App\Item;
 use App\Category;
+use Illuminate\Support\Facades\Mail;
 use Http;
 
 class HomeController extends Controller
@@ -15,10 +16,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+ 
 
     /**
      * Show the application dashboard.
@@ -54,6 +52,21 @@ class HomeController extends Controller
 
     public function about(){
         return view('home.about');
+    }
+
+    public function sendEmailContact(Request $request){
+        Mail::send('emails.contact',
+             array(
+                 'name' => $request->name,
+                 'email' => $request->email,
+                 'message_user' => $request->message
+             ), function($message) use ($request)
+               {
+                  $message->from($request->email);
+                  $message->to('487c74d232-512076@inbox.mailtrap.io');
+               });
+
+          return back()->with('success', 'Thank you for contact us!');
     }
 
 }

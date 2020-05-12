@@ -78,6 +78,9 @@ Route::post('wishlist/store', 'WishlistController@store')->name("wishlist.store"
 Route::delete('wishlist/delete/{id}', 'WishlistController@deleteOne')->name("wishlist.delete");
 
 
+//contact
+Route::post('/contact/sendEmailContact', 'HomeController@sendEmailContact')->name("contact.send");
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
