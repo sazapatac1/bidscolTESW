@@ -29,6 +29,8 @@ RUN npm run dev
  
 # RUN php artisan migrate
 RUN php artisan key:generate
+# RUN php artisan storage
+RUN php artisan storage:link
 # RUN php artisan migrate
 RUN chmod -R 777 storage
  

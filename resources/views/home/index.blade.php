@@ -136,10 +136,10 @@
         <tbody>
             <tr>
                 <td>{{ $cambioMoneda['usd']['date'] }}</td>
-                <td>{{ bcdiv($cambioMoneda['eur']['inverseRate'], 1,2) }}</td>
-                <td>{{ bcdiv($cambioMoneda['usd']['inverseRate'], 1,2) }}</td>
-                <td>{{ bcdiv($cambioMoneda['jpy']['inverseRate'], 1,2) }}</td>
-                <td>{{ bcdiv($cambioMoneda['gbp']['inverseRate'], 1,2) }}</td>
+                <td>{{ $cambioMoneda['eur']['inverseRate'] }}</td>
+                <td>{{ $cambioMoneda['usd']['inverseRate'] }}</td>
+                <td>{{ $cambioMoneda['jpy']['inverseRate'] }}</td>
+                <td>{{ $cambioMoneda['gbp']['inverseRate'] }}</td>
             </tr>
         </tbody>
     </table>
