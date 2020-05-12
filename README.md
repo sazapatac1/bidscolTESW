@@ -5,8 +5,8 @@
 
 Bidscol is a global commerce leader that connects millions of buyers and sellers around the world. We exist to enable economic opportunity for individuals, entrepreneurs, businesses and organizations of all sizes. Our portfolio of brands includes Bidscol Marketplace and Bidscol Classifieds Group, operating in 190 markets around the world.
 
-[Bidscol](bidscol.tk) is accessible, powerful, and provides tools required for auctions.
-##**Time to sell it**
+## **Time to sell it**
+[Bidscol](www.bidscol.tk) is accessible, powerful, and provides tools required for auctions.
 
 ## Instrucciones para correr local
 - Descargar repositorio
@@ -28,7 +28,8 @@ Bidscol is a global commerce leader that connects millions of buyers and sellers
 >       php artisan storage:link
 - Finalmente ejecutar servidor
 >       php artisan serve
-Rutas
-*/* -> Home
-*/item/index/all/0* -> Todos los productos
-*/admin* -> Acceso administrativo para el usuario 1
+
+## Rutas
+- */* -> Home
+- */item/index/all/0* -> Todos los productos
+- */admin* -> Acceso administrativo para el usuario 1
