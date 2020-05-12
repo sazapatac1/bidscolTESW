@@ -8,6 +8,8 @@ use App\Comment;
 use Illuminate\Http\Request;
 use App\Interfaces\ImageStorage;
 use App\Mail\WinnerMail;
+use App\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class ItemController extends Controller
@@ -62,6 +64,7 @@ class ItemController extends Controller
         $data = [];
         $data["title"] = "Product";
         $data["item"] = Item::find($id);
+        $data["wishitem"] = Wishlist::where('item_id',$id)->where('user_id', Auth::user()->getId())->first();
         $data["max_bid"] = Bid::where('item_id',$id)
                             ->orderBy('bid_value','DESC')
                             ->first();
@@ -118,6 +121,10 @@ class ItemController extends Controller
     public function deleteOne($id)
     {
         $item = Item::findOrFail($id);
+        //delete item image
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->delete($item->getImage_name());
+        //delete item
         $item->delete(); 
         return redirect()->route('item.list')->with('success','Item deleted successfully');
     }

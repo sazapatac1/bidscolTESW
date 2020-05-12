@@ -28,7 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
+       /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -45,8 +45,16 @@ class User extends Authenticatable
         return $this->attributes['name'];
     }
 
+    public function setName($name){
+        $this->attributes['name'] = $name;
+    }
+
     public function getEmail(){
         return $this->attributes['email'];
+    }
+
+    public function setEmail($email){
+        $this->attributes['email'] = $email;
     }
 
     public function comments(){
@@ -61,7 +69,7 @@ class User extends Authenticatable
         return $this->hasMany(Bid::class);
     }
 
-    public function favoriteLists(){
-        return $this->belongsTo(Comment::class);
+    public function wishLists(){
+        return $this->hasMany(Wishlist::class);
     }
 }

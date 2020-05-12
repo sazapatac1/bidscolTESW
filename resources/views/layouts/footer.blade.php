@@ -4,18 +4,18 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <h6>About</h6>
-            <p class="text-justify">bidcol.tk <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+            <p class="text-justify">bidcol.tk <i>@lang('navbar.legend') </i> @lang('navbar.message')</p>
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
+            <h6>@lang('list.category')</h6>
             <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 1]) }}">@lang('categories.glasses')</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 2]) }}">@lang('categories.electronics')</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 3]) }}">@lang('categories.vehicles')</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 4]) }}">@lang('categories.clothes')</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 5]) }}">@lang('categories.antiques')</a></li>
+              <li><a href="{{ route('item.index', ['option' => 'category', 'id' => 6]) }}">@lang('categories.art')</a></li>
             </ul>
           </div>
 

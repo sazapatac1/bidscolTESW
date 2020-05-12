@@ -11,4 +11,8 @@ class ImageLocalStorage implements ImageStorage {
             Storage::disk('images')->put($image_name,file_get_contents($request->file('item_image')->getRealPath()));
         }
     }
+
+    public function delete($image_name){
+        Storage::disk('images')->delete($image_name);
+    }
 }

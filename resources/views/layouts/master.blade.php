@@ -7,6 +7,7 @@
     <link href="{{ asset('css/customStyle.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="img/logo.png" />
 </head>
 <body>
     <div id="app">
@@ -26,6 +27,19 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
+                        @if(count(config('app.languages')) > 1)
+                            <li class="nav-item dropdown d-md-down-none">
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ strtoupper(app()->getLocale()) }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    @foreach(config('app.languages') as $langLocale => $langName)
+                                        <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
+                                    @endforeach
+                                </div>
+                            </li>
+                        @endif
                     <!-- Future authentication Links -->           
                 <ul class="navbar-nav ml-auto">
                     <!-- Future Left Side Links --> 
@@ -61,11 +75,15 @@
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">
                                         {{ __('Profile') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('wishlist.show') }}">
+                                        @lang('wishlist.wishlist')
+                                    </a>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
