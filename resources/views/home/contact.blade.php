@@ -18,7 +18,7 @@
                 </ul>
                 @endif
                 <div class="list-groupm mt-2">
-                    <form enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('contact.send')}}">
                         @csrf
                         <div class="form-group">
                             <label>@lang('contact.name')</label>
@@ -29,9 +29,9 @@
                             <input type="text" class="form-control" name="email" value="{{ old('email') }}" required>
                         </div>
                         <div class="form-group">
-                          <label>@lang('items.description')</label>
+                          <label>@lang('contact.description')</label>
                           <br>
-                          <textarea name="description" class="form-control" rows="5" placeholder="@lang('contact.textarea')"required></textarea>
+                          <textarea name="message" class="form-control" rows="5" placeholder="@lang('contact.textarea')"required></textarea>
                         </div>
                         <button type="submit" class="btn btn-success pull-right">@lang('contact.submit')</button>
                       </form>

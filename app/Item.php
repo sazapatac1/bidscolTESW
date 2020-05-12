@@ -130,12 +130,17 @@ class Item extends Model
 
     public function getDaysLeft()
     {
-        $now = date("Y-m-d");
-        $diff = abs(strtotime($this->attributes['final_date']) - strtotime($now));
-        $years = floor($diff / (365*60*60*24));
-        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-        return $days;
+        if($this->getStatus() == 'Finished'){
+            return 0;
+        }
+        else{
+            $now = date("Y-m-d");
+            $diff = abs(strtotime($this->attributes['final_date']) - strtotime($now));
+            $years = floor($diff / (365*60*60*24));
+            $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+            $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            return $days;
+        }
     }
 
     public function category(){

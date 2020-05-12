@@ -114,8 +114,20 @@ class ItemController extends Controller
                 ->first();
         $item->setWinner($winner->user->getId());
         $item->save();
-        Mail::to($winner->user->getEmail())->send(new WinnerMail);
-        return back()->with('succes','Item finished successfully');
+        //Mail::to($winner->user->getEmail())->send(new WinnerMail);
+
+        //Send mail to winner
+        Mail::send('emails.winner',
+             array(
+                 'name' => $winner->user->getName(),
+                 'price' => $winner->getBidValue(),
+                 'item' => $winner->item
+             ), function($message) use ($winner)
+               {
+                  $message->from('487c74d232-512076@inbox.mailtrap.io');
+                  $message->to($winner->user->getEmail());
+               });
+        return back()->with('success','Item finished successfully');
     }
 
     public function deleteOne($id)
