@@ -33,10 +33,10 @@
                         <a class="nav-link" href="{{ route('item.index', ['option' => 'all', 'id' => 0]) }}">@lang('navbar.items')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.about')</a>
+                        <a class="nav-link" href="{{ route('home.about') }}">@lang('navbar.about')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@lang('navbar.contact')</a>
+                        <a class="nav-link" href="{{ route('home.contact') }}">@lang('navbar.contact')</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->              

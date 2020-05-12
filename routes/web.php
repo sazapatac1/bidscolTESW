@@ -42,6 +42,9 @@ Route::get('/', 'HomeController@index')->name("home.index");
 Route::get('/info','HomeController@info')->name("home.info");
 Route::get('/profile','UserController@profile')->name("user.profile");
 Route::get('/profile/download', 'UserController@exportPDF')->name("user.pdf");
+Route::get('/contact', 'HomeController@contact')->name('home.contact');
+Route::get('/about', 'HomeController@about')->name('home.about');
+
 
 
 //Item controller
