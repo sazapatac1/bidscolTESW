@@ -11,11 +11,10 @@ use Tests\TestCase;
 
 class ItemControllerTest extends TestCase
 {
-    /** @test para comprobar que solo usuarios autenticados pueden ver la pagina de inicio */
+    /** @test para comprobar que el exchange rate aparece en la pagina inicial */
     public function item_index_display_all_products(){
-        //$response = $this->get('/');
-        //$response->assertSee('About');
-        //$response->assertStatus(200);
+        $response = $this->get('/');
+        $response->assertSee('Currency Exchange Rate');
     }
 
 }
