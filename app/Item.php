@@ -146,8 +146,9 @@ class Item extends Model
         return $this->hasMany(Bid::class);
     }
 
-    public function favoritesLists(){
-        return $this->belongsToMany(FavoritesList::class);
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
     }
 
     public function user(){

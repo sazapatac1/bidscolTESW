@@ -38,7 +38,7 @@
     <div class="text-right">
         <a href="{{ route('item.create') }}" class="btn btn-success mb-3" style="width: 200px;" disabled>@lang('items.sell')</a>
     </div>
-    <!--Carousel
+    <!--Carousel -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -60,7 +60,107 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    End Carousel-->
+    <!--End Carousel-->
+
+    <!-- statistics -->
+    <div class="mt-5 row">
+        <!-- Biggest bid -->
+        @if($data["biggest_bid"] && $item = $data["biggest_bid"]->item)
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header card-title">Biggest bid in the history</h5>
+                <img class="card-img-top" height="300" width="300" src="{{ URL::asset('storage/images') }}/{{$item->getImage_name()}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-dark" href="{{ route('item.show', ['id' => $item->getId()]) }}">
+                            {{ $item->getName() }} 
+                        </a>
+                        <i class="card-text pull-right small-letter mt-3">{{ $item->category->getName() }}</i>
+                    </h5>
+                    <p class="card-text"><b>Bid: </b>${{ $data["biggest_bid"]->getBidValue() }}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        <!-- Product with more bids -->
+        @if($data["mostItem_bids"] && $item = $data["mostItem_bids"])
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header card-title">Product with more bids</h5>
+                <img class="card-img-top" height="300" width="300" src="{{ URL::asset('storage/images') }}/{{$item->getImage_name()}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-dark" href="{{ route('item.show', ['id' => $item->getId()]) }}">
+                            {{ $item->getName() }} 
+                        </a>
+                        <i class="card-text pull-right small-letter mt-3">{{ $item->category->getName() }}</i>
+                    </h5>
+                    <p class="card-text"><b>{{ $item->bids_count}}</b> bids.</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        <!-- Product in more wish lists -->
+        @if($data["mostItem_wishLists"] && $item = $data["mostItem_wishLists"])
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header card-title">Product in more wish lists</h5>
+                <img class="card-img-top" height="300" width="300" src="{{ URL::asset('storage/images') }}/{{$item->getImage_name()}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-dark" href="{{ route('item.show', ['id' => $item->getId()]) }}">
+                            {{ $item->getName() }} 
+                        </a>
+                        <i class="card-text pull-right small-letter mt-3">{{ $item->category->getName() }}</i>
+                    </h5>
+                    <p class="card-text">In <b>{{ $item->wishlists_count}}</b> wish lists.</p>
+                </div>
+        </div>
+        </div>
+        @endif
+    </div>
+    <!-- api money -->
+    <table class="mt-5 table text-center">
+        <thead>
+            <tr>
+                <td colspan="5"><strong> @lang('apis.currency_exchange_rate') </strong></td>
+            </tr>
+            <tr>
+                <th>@lang('apis.date')</th>
+                <th>@lang('apis.euro')</th>
+                <th>@lang('apis.dollar')</th>
+                <th>@lang('apis.yen')</th>
+                <th>@lang('apis.pound_sterling')</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ $cambioMoneda['usd']['date'] }}</td>
+                <td>{{ bcdiv($cambioMoneda['eur']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['usd']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['jpy']['inverseRate'], 1,2) }}</td>
+                <td>{{ bcdiv($cambioMoneda['gbp']['inverseRate'], 1,2) }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- api gym -->
+    <div class="container">
+        <h6 class = "text-center"> @lang('apis.maybe_it_may_interest_you') </h6>
+        <div class=row>
+            @foreach($rutinasEjercicio['data'] as $rutinas)
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title"> {{ $rutinas['exercise']['name'] }} </h6>
+                        <p class = "card-text"> {{ $rutinas['exercise']['description'] }} </p>
+                        <a href="#" class="btn btn-success"> @lang('apis.see_exercise') </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
 </div>
 @endsection
 

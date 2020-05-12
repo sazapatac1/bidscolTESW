@@ -20,4 +20,6 @@ return[
     'created_at' => 'Creada el',
     'List_of_comments' => 'Lista de comentarios',
     'categoryfamous' => "Categorias frecuentes",
+    'List_of_users' => 'Lista de usuarios',
+    'email' => 'E-mail'
 ];
