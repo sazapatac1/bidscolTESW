@@ -11,7 +11,7 @@ class CommentController extends Controller
     {
         Comment::validate($request);
         Comment::create($request->only(["description","user_id","item_id"]));
-        return back()->with('success',@lang('commentcontroller.Comment_created_successfully'));
+        return back()->with('success',Lang::get('commentcontroller.Comment_created_successfully'));
     }
 
     public function showList()
@@ -35,14 +35,14 @@ class CommentController extends Controller
         $comment = Comment::findOrFail($request->comment_id);
         $comment->setDescription($request->description);
         $comment->save();
-        return redirect()->route('comment.list')->with('success', @lang('commentcontroller.Comment_edited'));
+        return redirect()->route('comment.list')->with('success', Lang::get('commentcontroller.Comment_edited'));
     }
 
     public function deleteOne($id)
     {
         $comment = Comment::findOrFail($id);
         $comment->delete(); 
-        return back()->with('success', @lang('commentcontroller.Comment_deleted'));
+        return back()->with('success', Lang::get('commentcontroller.Comment_deleted'));
     }
 
 

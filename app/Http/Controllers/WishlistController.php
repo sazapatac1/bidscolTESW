@@ -27,7 +27,7 @@ class WishlistController extends Controller
         Wishlist::validate($request);            
         Wishlist::create($request->only(["user_id","item_id"]));
             
-        return back()->with('success',@lang('wishlistcontroller.Added_to_your_wishlist'));
+        return back()->with('success',Lang::get('wishlistcontroller.Added_to_your_wishlist'));
     }
 
     
@@ -35,7 +35,7 @@ class WishlistController extends Controller
     {
         $wishlist = Wishlist::findOrFail($id);
         $wishlist->delete(); 
-        return back()->with('success',@lang('wishlistcontroller.Item_deleted_from_Wishlist'));
+        return back()->with('success',Lang::get('wishlistcontroller.Item_deleted_from_Wishlist'));
     }
 
 }
