@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class BidController extends Controller
 {
-    
+      
     public function store(Request $request)
     {
         Bid::validate($request);
         Bid::create($request->only(["bid_value","item_id", "user_id"]));
         return back()->with('success','Bid done!');
     }
-    
+
+       
     public function showList()
     {
         $data = []; //to be sent to the view

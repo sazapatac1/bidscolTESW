@@ -21,6 +21,7 @@ class WishlistController extends Controller
         return view('wishlist.show')->with(['wishlist' => $wishlist]);
     }
 
+    
     public function store(Request $request)
     {
         Wishlist::validate($request);            
@@ -29,6 +30,7 @@ class WishlistController extends Controller
         return back()->with('success','Added to your wishlist');
     }
 
+    
     public function deleteOne($id)
     {
         $wishlist = Wishlist::findOrFail($id);
