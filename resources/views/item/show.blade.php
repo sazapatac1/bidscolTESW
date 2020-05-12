@@ -16,7 +16,7 @@
                 @if(!$data["wishitem"])
                     <button class="btn btn-warning" type="submit">@lang('wishlist.add')</button>
                 @else
-                    <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.add')</button>
+                    <button class="btn btn-warning" type="submit" disabled="true">@lang('wishlist.already')</button>
                 @endif
             </form>             
             @if($data["item"]->getStatus()=='Active')
