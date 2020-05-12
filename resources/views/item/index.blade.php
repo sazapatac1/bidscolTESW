@@ -52,19 +52,19 @@
             <div class="card-body">
                 <p class="card-text">{{ $item->getDescription() }}</p>
                 @if($item->getStatus() == 'Active')
-                    <p class="card-text text-success">{{ $item->getStatus() }}</p>
+                    <p class="card-text text-success">@lang('items.active')</p>
                     <p class="card-text">{{ $item->getDaysLeft()}} @lang('items.days_left')</p>
                     <div class="text-center">
                         <a href="{{ route('item.show', ['id' => $item->getId()])}}" class="btn btn-success" style="width: 100px;">@lang('items.bid')</a>
                     </div>
                 @elseif($item->getStatus() == 'Inactive')
-                    <p class="card-text text-warning">{{ $item->getStatus() }}</p>
+                    <p class="card-text text-warning">@lang('items.inactive')</p>
                     <p class="card-text">{{ $item->getDaysLeft()}} @lang('items.days_left')</p>
                     <div class="text-center">
                         <a href="#" class="btn btn-warning disabled" style="width: 100px;" disabled>x</a>
                     </div>
                 @else
-                <p class="card-text text-danger">{{ $item->getStatus() }}</p>
+                <p class="card-text text-danger">@lang('items.finished')</p>
                     <div class="text-center">
                         <br>
                         <a href="{{ route('item.show', ['id' => $item->getId()])}}" class="btn btn-success mt-3" style="width: 120px;">@lang('items.see_winner')</a>

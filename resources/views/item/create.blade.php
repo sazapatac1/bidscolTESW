@@ -53,8 +53,8 @@
                                 <label>@lang('items.status')</label>
                                 <br>
                                 <select name="status" class="form-control">
-                                    <option selected> @lang('items.active') </option>
-                                    <option>@lang('items.inactive')</option>
+                                    <option selected value="Active"> @lang('items.active') </option>
+                                    <option value="Inactive">@lang('items.inactive')</option>
                                 </select>
                             </div>
                         </div>

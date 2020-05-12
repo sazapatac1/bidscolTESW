@@ -7,41 +7,12 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
 
-    public function index()
-    {
-        $data = [];
-        $data["title"] = "Show comments";
-        $data["comments"] = Comment::orderBy("id")->get();
-
-        return view('comment.index')->with("data", $data);
-    }
-
-
-    public function create()
-    {
-        $data = [];
-        $data["title"] = "Create comment";
-
-        return view('comment.create')->with("data", $data);
-    }
-
-
     public function store(Request $request)
     {
         Comment::validate($request);
         Comment::create($request->only(["description","user_id","item_id"]));
         return back()->with('success','Comment created successfully!');
     }
-
-    function show($id)
-    {
-        $data = [];
-        $data["title"] = "Show comment";
-        $data["comment"] = Comment::find($id);
-
-        return view('comment.show')->with("data", $data);
-    }
-
 
     public function showList()
     {

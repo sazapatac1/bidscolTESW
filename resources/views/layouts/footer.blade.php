@@ -24,9 +24,7 @@
             <ul class="footer-links">
               <li><a href="{{ route('home.about') }}">About Us</a></li>
               <li><a href="{{ route('home.contact') }}">Contact Us</a></li>
-              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+              <li><a href="https://github.com/sazapatac1/bidscolTESW">Github</a></li>
             </ul>
           </div>
         </div>
