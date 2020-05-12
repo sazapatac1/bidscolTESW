@@ -30,7 +30,7 @@ class CategoryController extends Controller
         Category::validate($request);            
         Category::create($request->only(["name"]));
             
-        return redirect()->route('category.list')->with('success','Category created successfully!');
+        return redirect()->route('category.list')->with('success',@lang('categorycontroller.Category_created_successfully'));
     }
         
     public function showOne($id)
@@ -51,13 +51,13 @@ class CategoryController extends Controller
         $category = Category::findOrFail($request->category_id);
         $category->setName($request->name);
         $category->save();
-        return redirect()->route('category.list')->with('success','Category edited');
+        return redirect()->route('category.list')->with('success',@lang('categorycontroller.Category_edited'));
     }
 
     public function deleteOne($id)
     {
         $category = Category::findOrFail($id);
         $category->delete(); 
-        return redirect()->route('category.list')->with('success','Category deleted');
+        return redirect()->route('category.list')->with('success', @lang('categorycontroller.Category_deleted'));
     }
 }

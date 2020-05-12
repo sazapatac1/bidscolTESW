@@ -56,7 +56,7 @@ class ItemController extends Controller
         $storeInterface->store($request, $itemData['image_name']);
         Item::validate($request);
         Item::create($itemData);
-        return back()->with('success','Item created successfully!');
+        return back()->with('success',@lang('itemcontroller.Item_created_successfully'));
     }
 
     public function show($id)
@@ -102,7 +102,7 @@ class ItemController extends Controller
         $item->setFinal_date($request->final_date);
         $item->setCategory_id($request->category_id);
         $item->save();
-        return redirect()->route('item.list')->with('success','Product edited');
+        return redirect()->route('item.list')->with('success',@lang('itemcontroller.Product_edited'));
     }
 
     public function finishAuction(Request $request)
@@ -127,7 +127,7 @@ class ItemController extends Controller
                   $message->from('487c74d232-512076@inbox.mailtrap.io');
                   $message->to($winner->user->getEmail());
                });
-        return back()->with('success','Item finished successfully');
+        return back()->with('success',@lang('itemcontroller.Item_finished_successfully'));
     }
 
     public function deleteOne($id)
@@ -138,6 +138,6 @@ class ItemController extends Controller
         $storeInterface->delete($item->getImage_name());
         //delete item
         $item->delete(); 
-        return redirect()->route('item.list')->with('success','Item deleted successfully');
+        return redirect()->route('item.list')->with('success', @lang('itemcontroller.Item_deleted_successfully'));
     }
 }

@@ -12,7 +12,7 @@ class BidController extends Controller
     {
         Bid::validate($request);
         Bid::create($request->only(["bid_value","item_id", "user_id"]));
-        return back()->with('success','Bid done!');
+        return back()->with('success', @lang('bidcontrollers.Bid_done'));
     }
 
        
@@ -37,14 +37,14 @@ class BidController extends Controller
         $bid = Bid::findOrFail($request->bid_id);
         $bid->setBidValue($request->bid_value);
         $bid->save();
-        return redirect()->route('bid.list')->with('success','Bid edited');
+        return redirect()->route('bid.list')->with('success',@lang('bidcontrollers.Bid_edited'));
     }
 
     public function deleteOne($id)
     {
         $bid = Bid::findOrFail($id);
         $bid->delete(); 
-        return redirect()->route('bid.list')->with('success','Bid deleted');
+        return redirect()->route('bid.list')->with('success', @lang('bidcontrollers.Bid_deleted'));
     }
     
 }

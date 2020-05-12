@@ -38,14 +38,14 @@ class UserController extends Controller
         $user->setName($request->name);
         $user->setEmail($request->email);
         $user->save();
-        return redirect()->route('user.list')->with('success','User edited');
+        return redirect()->route('user.list')->with('success', @lang('usercontroller.User_edited'));
     }
 
     public function deleteOne($id)
     {
         $user = User::findOrFail($id);
         $user->delete(); 
-        return back()->with('success','User deleted');
+        return back()->with('success',@lang('usercontroller.User_deleted'));
     }
 
     public function profile(){
