@@ -48,4 +48,12 @@ class HomeController extends Controller
         return view('layouts.app');
     }
 
+    public function contact(){
+        return view('home.contact');
+    }
+
+    public function about(){
+        return view('home.about');
+    }
+
 }
