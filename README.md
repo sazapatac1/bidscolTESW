@@ -15,6 +15,8 @@ Bidscol is a global commerce leader that connects millions of buyers and sellers
 >       CREATE DATABASE bidcolDB
 - Crear archivo .env a partir de .envexample
 >       cp .env.example .env
+- Reemplazar la siguiente linea en el archivo .env
+>       DB_DATABASE=bidcolDB
 - Descargar dependencias
 >       composer install
 - Genera Key
@@ -26,6 +28,8 @@ Bidscol is a global commerce leader that connects millions of buyers and sellers
 >       php artisan route:clear
 - Link al storage
 >       php artisan storage:link
+- Fakers
+>       php artisan db:seed
 - Finalmente ejecutar servidor
 >       php artisan serve
 

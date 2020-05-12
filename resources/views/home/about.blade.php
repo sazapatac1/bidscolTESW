@@ -20,10 +20,12 @@
                 <div class="list-groupm mt-2">
                     <form enctype="multipart/form-data">
                         @csrf
+                        <div class="text-center">
+                            <img src="img/logo.png" class="rounded mx-auto d-block" alt="...">
+                        </div>
                         <div class="form-group">
                             <label>@lang('about.text')</label>
                         </div>
-                        
                       </form>
                   </div>
             </div>
