@@ -8,6 +8,12 @@ Bidscol is a global commerce leader that connects millions of buyers and sellers
 ## **Time to sell it**
 [Bidscol](www.bidscol.tk) is accessible, powerful, and provides tools required for auctions.
 
+# Arquitectura del proyecto
+## Diagrama de Clases
+<p align="center"><img src="https://raw.githubusercontent.com/sazapatac1/bidscolTESW/master/bidsClassDiagram.png" width="800"></p>
+## Diagrama de arquitectura
+<p align="center"><img src="https://raw.githubusercontent.com/sazapatac1/bidscolTESW/master/bidsArchitecureDiagram.png" width="800"></p>
+
 ## Instrucciones para correr local
 - Descargar repositorio
 >       git clone https://github.com/sazapatac1/bidscolTESW.git
