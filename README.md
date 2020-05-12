@@ -21,7 +21,7 @@ Bidscol is a global commerce leader that connects millions of buyers and sellers
 >       CREATE DATABASE bidcolDB
 - Crear archivo .env a partir de .envexample
 >       cp .env.example .env
-- Reemplazar la siguiente linea en el archivo .env
+- Reemplazar la siguiente linea en el archivo .env yponer credenciales de la DB
 >       DB_DATABASE=bidcolDB
 - Descargar dependencias
 >       composer install
