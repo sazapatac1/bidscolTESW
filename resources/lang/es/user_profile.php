@@ -6,5 +6,5 @@ return[
     'email' => 'E-mail',
     'products' => 'Mis productos',
     'bids' => 'Mis pujas',
-    'categories' => 'Categorias'
+    'categories' => 'Categorias',
 ];

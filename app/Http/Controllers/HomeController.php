@@ -55,7 +55,7 @@ class HomeController extends Controller
                   $message->to('487c74d232-512076@inbox.mailtrap.io');
                });
 
-          return back()->with('success', 'Thank you for contact us!');
+          return back()->with('success', Lang::get('homecontroller.Thank_you_for_contact_us'));
     }
 
 }
