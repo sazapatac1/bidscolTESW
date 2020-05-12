@@ -29,6 +29,9 @@ RUN npm run dev
  
 # RUN php artisan migrate
 RUN php artisan key:generate
+# RUN php artisan clear
+RUN php artisan cache:clear
+RUN php artisan route:clear
 # RUN php artisan storage
 RUN php artisan storage:link
 # RUN php artisan migrate
