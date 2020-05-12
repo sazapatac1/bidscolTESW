@@ -23,7 +23,7 @@ class HomeController extends Controller
         $apiCurrency = Http::get('http://www.floatrates.com/daily/cop.json');
         $cambioMoneda = $apiCurrency->json();
 
-        $apiExercise = Http::get('http://18.206.205.89/public/api/routines');
+        $apiExercise = Http::get('http://cano.ml/public/api/routines');
         $rutinasEjercicio = $apiExercise->json();
 
         $data["categories"] = Category::all();
